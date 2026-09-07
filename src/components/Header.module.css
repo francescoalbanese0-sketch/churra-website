@@ -1,0 +1,131 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(0.9rem, 2.4vw, 1.5rem) clamp(1.25rem, 4vw, 3rem);
+  background: linear-gradient(180deg, rgba(4, 3, 2, 0.65) 0%, rgba(4, 3, 2, 0) 100%);
+  transition: background 0.4s var(--ease-cinematic), padding 0.4s var(--ease-cinematic);
+}
+
+.header.scrolled {
+  background: rgba(7, 6, 5, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.logo {
+  height: clamp(40px, 6vw, 56px);
+  width: auto;
+  display: block;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+}
+
+.navLink {
+  font-family: var(--font-ui);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: var(--gold);
+}
+
+.toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.toggle span {
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--ivory);
+  transition: transform 0.3s var(--ease-cinematic), opacity 0.3s ease;
+}
+
+.toggleOpen span:first-child {
+  transform: translateY(3.5px) rotate(45deg);
+}
+.toggleOpen span:last-child {
+  transform: translateY(-3.5px) rotate(-45deg);
+}
+
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .nav {
+    display: none;
+  }
+
+  .toggle {
+    display: flex;
+  }
+
+  .mobileMenu {
+    position: fixed;
+    inset: 0;
+    z-index: 89;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background: rgba(5, 4, 3, 0.97);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s var(--ease-cinematic);
+  }
+
+  .mobileMenuOpen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobileNavLink {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--ivory);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .toggle span,
+  .mobileMenu {
+    transition: none;
+  }
+}

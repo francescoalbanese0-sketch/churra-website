@@ -1,0 +1,52 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vh, 2.5rem);
+  padding: clamp(6rem, 16vh, 10rem) 1.5rem clamp(4rem, 10vh, 6rem);
+  /* Transparent: the world's last soft glow sits behind the mark rather
+     than a flat black card underneath it. */
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bull {
+  width: clamp(120px, 16vw, 200px);
+  height: auto;
+  opacity: 0.96;
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--ivory-dim);
+}
+
+.place {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+
+.coming {
+  margin-top: 0.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-faint);
+}

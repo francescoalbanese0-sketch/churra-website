@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-09-06T01:20:37.203884Z",
+    "display_name": "GPT Image 2",
+    "id": "0bee57ea-657c-4e30-ad81-8149ecb95799",
+    "job_type": "gpt_image_2",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260906_012037_0bee57ea-657c-4e30-ad81-8149ecb95799_min.webp",
+    "params": {
+      "aspect_ratio": "3:4",
+      "height": 2336,
+      "medias": [],
+      "model": "videotape-alpha",
+      "prompt": "Macro photograph of real open flame and glowing charcoal in a dark professional churrasqueira grill, small tongues of fire licking upward, tiny embers glowing bright orange against a completely black background, faint smoke, dramatic single-source lighting, extremely shallow depth of field, cinematic realism, professional restaurant photography, no people, no text.",
+      "quality": "high",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1744
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260906_012037_0bee57ea-657c-4e30-ad81-8149ecb95799.png",
+    "status": "completed"
+  }
+]

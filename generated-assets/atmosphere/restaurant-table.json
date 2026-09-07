@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-09-06T01:25:53.998987Z",
+    "display_name": "GPT Image 2",
+    "id": "cf49b31c-4f24-4ae4-9cc4-8b51e75b76c0",
+    "job_type": "gpt_image_2",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260906_012553_cf49b31c-4f24-4ae4-9cc4-8b51e75b76c0_min.webp",
+    "params": {
+      "aspect_ratio": "16:9",
+      "height": 1520,
+      "medias": [],
+      "model": "videotape-alpha",
+      "prompt": "Photograph of an elegant dark restaurant table setting for a premium Brazilian steakhouse, dark wood table, black stoneware plates, refined dark cutlery, a low candle flame, a glass of red wine catching warm light, linen napkin, shallow depth of field with soft foreground blur, warm amber ambient lighting mixed with cool dark shadows, sophisticated and intimate atmosphere, no people, no text, professional interior and restaurant photography.",
+      "quality": "high",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2688
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260906_012553_cf49b31c-4f24-4ae4-9cc4-8b51e75b76c0.png",
+    "status": "completed"
+  }
+]

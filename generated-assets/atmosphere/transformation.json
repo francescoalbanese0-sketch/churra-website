@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-09-06T01:19:05.745339Z",
+    "display_name": "GPT Image 2",
+    "id": "06f73eac-387b-401f-906a-a4a81105a8ed",
+    "job_type": "gpt_image_2",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260906_011905_06f73eac-387b-401f-906a-a4a81105a8ed_min.webp",
+    "params": {
+      "aspect_ratio": "21:9",
+      "height": 1152,
+      "medias": [],
+      "model": "videotape-alpha",
+      "prompt": "Extreme close-up macro photograph of glowing red-orange charcoal embers in a traditional Brazilian churrasqueira grill, wisps of thin smoke drifting across the frame, a dark cast-iron grill grate partially visible with warm firelight reflecting off it, almost entirely black background, shallow depth of field, soft bokeh from distant embers, moody atmospheric restaurant photography, shot on a full-frame camera with a fast prime lens, natural warm color temperature, no people, no text, ultra realistic, editorial food magazine quality.",
+      "quality": "high",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2688
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260906_011905_06f73eac-387b-401f-906a-a4a81105a8ed.png",
+    "status": "completed"
+  }
+]

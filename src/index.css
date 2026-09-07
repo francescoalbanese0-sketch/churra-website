@@ -1,0 +1,150 @@
+:root {
+  color-scheme: dark;
+
+  /* --- Palette --- */
+  --black: #070605;
+  --charcoal: #120f0d;
+  --charcoal-2: #1b1714;
+  --metal: #262019;
+  --metal-2: #322a20;
+  --brown-deep: #2c1810;
+  --ivory: #ede4d3;
+  --ivory-dim: rgba(237, 228, 211, 0.62);
+  --ivory-faint: rgba(237, 228, 211, 0.32);
+  --ember: #ff6a2b;
+  --ember-hot: #ffb347;
+  --ember-dim: #a13d16;
+  --smoke: #4a443c;
+
+  /* Restrained brand gold/amber — matches the logo's metal, used for
+     typographic accents away from the fire itself (nav, section labels,
+     the closing signature). Fire-adjacent glows keep --ember/--ember-hot;
+     this keeps the rest of the site from reading as "orange". */
+  --gold: #c9a15a;
+  --gold-dim: rgba(201, 161, 90, 0.7);
+  --gold-faint: rgba(201, 161, 90, 0.4);
+
+  /* --- Type --- */
+  --font-display: "Bodoni Moda", "Times New Roman", serif;
+  --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* --- Motion --- */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --vh: 1vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* IMPORTANT: overflow-x:hidden goes on `body` ONLY, never also on `html`.
+   Per the CSS Overflow spec, setting overflow-x to a non-visible value
+   forces the perpendicular axis (overflow-y) to a used value of `auto` —
+   so `html, body { overflow-x: hidden }` silently turns BOTH elements into
+   independent scroll containers. That ambiguity is what breaks
+   `position: sticky` for every descendant (the PinnedSequence sections):
+   browsers resolve "nearest scrolling ancestor" against whichever of the
+   two wins, which then never reports the scroll the page is actually doing
+   on the other one — sticky elements just scroll away as if `static`. */
+html {
+  background: var(--black);
+  scroll-behavior: auto;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--black);
+  color: var(--ivory);
+  font-family: var(--font-ui);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  position: relative;
+  width: 100%;
+}
+
+img,
+canvas,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--ember);
+  color: var(--black);
+}
+
+/* Thin, dark, premium scrollbar (WebKit) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--metal-2);
+  border-radius: 3px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Utility: tracked-out eyebrow / label text used across sections */
+.label {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,25 @@
+/* Deliberately transparent — this is the one place the fixed CinematicWorld
+   canvas behind #root is meant to be fully visible, uninterrupted by any
+   section's own background. */
+.corridor {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.word {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  letter-spacing: 0.02em;
+  color: var(--ivory-dim);
+  text-shadow: 0 0 40px rgba(255, 138, 60, 0.25);
+}
+
+.corridorStill {
+  height: 14vh;
+  background: var(--black);
+}

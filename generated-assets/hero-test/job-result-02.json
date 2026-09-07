@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-09-05T23:29:43.955789Z",
+    "display_name": "GPT Image 2",
+    "id": "285e1423-6e00-4125-8ade-51b16b428956",
+    "job_type": "gpt_image_2",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260905_232943_285e1423-6e00-4125-8ade-51b16b428956_min.webp",
+    "params": {
+      "aspect_ratio": "16:9",
+      "height": 1520,
+      "medias": [],
+      "model": "videotape-alpha",
+      "prompt": "Realistic photograph of traditional Brazilian churrasco picanha on a horizontal steel skewer, close-up cinematic commercial food photography. The skewer holds 3 to 4 separate thick individual pieces of picanha threaded close together — NOT one continuous rectangular roast. Each piece is a rounded, irregular chunk of dark reddish-brown roasted beef, naturally folded so a thick glossy golden fat cap curves around one rounded edge of the piece like a crescent, following the natural curve of the meat rather than lying as a flat rectangular slab. Every piece has a slightly different natural shape and size, no perfect symmetry between pieces. Deep brown seared crust with uneven charred edges, juicy realistic meat surface, small caramelized spots, a light dusting of coarse salt. The fat renders glossy and golden, not orange or artificial-looking. The skewer runs horizontally across the center of the frame, meat centered and generous negative space above and around it. Glowing red charcoal directly underneath, small natural flames touching the lower edges of the meat, a thin subtle wisp of smoke rising behind, a few tiny glowing embers, faint realistic heat haze in the air, warm firelight reflecting naturally on the fat and the steel skewer. Background almost entirely black, soft and unobtrusive. Shallow depth of field, natural dramatic lighting, shot like a real DSLR photograph inside a high-end Brazilian steakhouse, subtle realistic film grain and lens character. No text, no logo, no illustration, no 3D render or CGI look.",
+      "quality": "high",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2688
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260905_232943_285e1423-6e00-4125-8ade-51b16b428956.png",
+    "status": "completed"
+  }
+]

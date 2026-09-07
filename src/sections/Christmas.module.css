@@ -1,0 +1,139 @@
+.section {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(5rem, 14vh, 9rem) 1.5rem;
+  overflow: hidden;
+  background: var(--charcoal-2);
+}
+
+.mediaWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+  will-change: transform;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 3, 2, 0.55) 0%,
+    rgba(4, 3, 2, 0.72) 45%,
+    rgba(4, 3, 2, 0.55) 75%,
+    rgba(4, 3, 2, 0.85) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  text-align: center;
+}
+
+.eyebrow {
+  position: relative;
+  color: var(--ivory-faint);
+}
+
+.headline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* A `ch`-based width is unreliable on a Didone face like Bodoni Moda
+     (its figures/letterforms don't track the "0" glyph `ch` is defined
+     against very closely) — pixels tied to the viewport give a much more
+     predictable wrap point for "für Firmen & Gruppen" than guessing a
+     character count. */
+  max-width: min(90vw, 640px);
+}
+
+.headlineLine {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 5.6vw, 3.8rem);
+  line-height: 1.15;
+  color: var(--ivory);
+}
+
+.price {
+  position: relative;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3.4vw, 2rem);
+  color: var(--gold);
+}
+
+.price span {
+  font-family: var(--font-ui);
+  font-style: normal;
+  font-size: 0.6em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+  margin-left: 0.35em;
+}
+
+.actions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+
+.cta {
+  display: inline-block;
+  padding: 0.95rem 2.6rem;
+  border: 1px solid var(--gold);
+  color: var(--ivory);
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+.cta:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.phone {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--ivory-dim);
+  transition: color 0.3s ease;
+}
+
+.phone:hover {
+  color: var(--gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta,
+  .phone {
+    transition: none;
+  }
+}

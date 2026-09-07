@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-09-06T01:31:54.183076Z",
+    "display_name": "GPT Image 2",
+    "id": "786d83a0-e073-4584-86fb-c7e1ca92187f",
+    "job_type": "gpt_image_2",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260906_013154_786d83a0-e073-4584-86fb-c7e1ca92187f_min.webp",
+    "params": {
+      "aspect_ratio": "16:9",
+      "height": 1520,
+      "medias": [],
+      "model": "videotape-alpha",
+      "prompt": "Photograph of a large elegant dark dining table set for a group at a premium Brazilian steakhouse, multiple dark plates and glasses, warm candlelight and firelight glow from the side, dark wood and black textiles, a churrasco skewer with roasted meat visible slightly out of focus in the background, sophisticated warm atmosphere, wide shot, shallow depth of field, no Christmas decorations, no people, no readable text anywhere, no labels, no logos, no branding on any object, plain unlabeled wine bottle, professional restaurant photography, cinematic, realistic.",
+      "quality": "high",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2688
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260906_013154_786d83a0-e073-4584-86fb-c7e1ca92187f.png",
+    "status": "completed"
+  }
+]

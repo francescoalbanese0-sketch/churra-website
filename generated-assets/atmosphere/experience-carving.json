@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-09-06T01:27:24.85929Z",
+    "display_name": "GPT Image 2",
+    "id": "3674679b-cb40-4ce2-9d11-8b299d33a658",
+    "job_type": "gpt_image_2",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260906_012724_3674679b-cb40-4ce2-9d11-8b299d33a658_min.webp",
+    "params": {
+      "aspect_ratio": "16:9",
+      "height": 1520,
+      "medias": [],
+      "model": "videotape-alpha",
+      "prompt": "Cinematic close-up photograph of a churrasco knife carving a thin slice off a large roasted picanha steak on a traditional skewer, steam rising from the fresh cut, juices glistening, glowing charcoal fire visible and softly blurred in the background, warm dramatic lighting, dark background, shallow depth of field, professional food advertising photography, realistic, no people, no hands, no text.",
+      "quality": "high",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2688
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260906_012724_3674679b-cb40-4ce2-9d11-8b299d33a658.png",
+    "status": "completed"
+  }
+]

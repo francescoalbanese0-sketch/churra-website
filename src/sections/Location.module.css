@@ -1,0 +1,138 @@
+.section {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  text-align: center;
+  padding: clamp(5rem, 14vh, 9rem) 1.5rem;
+  /* Transparent: this is the journey's last, calmest beat — the
+     CinematicWorld canvas's own dying ember shows through behind the text
+     rather than a flat black card. */
+  background: transparent;
+}
+
+.pin {
+  width: 30px;
+  height: 41px;
+  margin-bottom: 1rem;
+}
+
+.eyebrow {
+  color: var(--ivory-faint);
+  margin-bottom: 0.6rem;
+}
+
+/* The calm, closing statement of the brand hierarchy — the biggest word on
+   this last quiet screen, after everything hot and moving has settled. */
+.name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(3rem, 9vw, 6rem);
+  color: var(--ivory);
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  color: var(--gold-dim);
+}
+
+.address {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ivory-dim);
+  margin-top: 1.6rem;
+}
+
+.contactLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+}
+
+.phone,
+.email {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  color: var(--gold);
+  transition: color 0.3s ease;
+}
+
+.email {
+  font-size: 0.92rem;
+  color: var(--ivory-dim);
+}
+
+.phone:hover,
+.email:hover {
+  color: var(--ivory);
+}
+
+.date {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 2.4vw, 1.3rem);
+  color: var(--ivory-faint);
+  margin-top: 1rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+/* Primary: reserve by phone — filled, the one warm surface on this quiet
+   screen. Secondary (.ctaGhost): the outline treatment the maps link had
+   before, now visibly the second choice rather than a matching pair. */
+.cta {
+  display: inline-block;
+  padding: 0.85rem 2.4rem;
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--black);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.cta:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+.ctaGhost {
+  background: transparent;
+  border-color: rgba(237, 228, 211, 0.3);
+  color: var(--ivory);
+}
+
+.ctaGhost:hover {
+  border-color: var(--gold);
+  background: transparent;
+  color: var(--gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone,
+  .email,
+  .cta,
+  .ctaGhost {
+    transition: none;
+  }
+}

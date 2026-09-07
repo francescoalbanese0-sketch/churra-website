@@ -1,0 +1,58 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  background: var(--black);
+}
+
+/* Plain wrapper with no CSS animation of its own — this is what GSAP fades
+   out. (Fading the pulsing .ember element directly doesn't work: a running
+   CSS keyframe animation takes precedence over an inline style on the same
+   property, so GSAP's opacity/scale tween would get fought by `pulse`
+   indefinitely and the ember would never actually disappear.) */
+.emberWrap {
+  display: block;
+}
+
+.ember {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff2d8 0%, var(--ember-hot) 30%, var(--ember) 60%, transparent 75%);
+  box-shadow:
+    0 0 20px 6px rgba(255, 122, 46, 0.55),
+    0 0 60px 20px rgba(255, 90, 30, 0.25);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.mark {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  color: var(--ivory-dim);
+  text-transform: uppercase;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0.85);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ember {
+    animation: none;
+  }
+}

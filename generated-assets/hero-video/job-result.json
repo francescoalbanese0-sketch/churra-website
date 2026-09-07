@@ -1,0 +1,41 @@
+[
+  {
+    "created_at": "2026-09-05T23:36:43.566197Z",
+    "display_name": "Seedance 2.0",
+    "id": "ba918ee2-9ccc-4de5-bb4a-663a009188e0",
+    "job_type": "seedance_2_0",
+    "min_result_url": null,
+    "params": {
+      "aspect_ratio": "16:9",
+      "bitrate_mode": "standard",
+      "duration": 8,
+      "generate_audio": false,
+      "genre": "auto",
+      "height": 1080,
+      "medias": [
+        {
+          "data": {
+            "id": "7b6ba7a3-b8be-4304-aae9-1911cbf8d595",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/7b6ba7a3-b8be-4304-aae9-1911cbf8d595_resize.jpg"
+          },
+          "role": "start_image"
+        }
+      ],
+      "mode": "std",
+      "model": "seedance_2_0",
+      "multi_prompt": [],
+      "multi_shot_mode": "custom",
+      "multi_shots": false,
+      "prompt": "The horizontal metal skewer slowly and continuously rotates around its own longitudinal axis, carrying the four picanha pieces naturally around with it as one rigid rotating assembly — the meat turns only because the skewer turns, it never moves independently. Rotation is slow, smooth, mechanical and continuous, like a real rotisserie motor. The four meat pieces and their curved fat caps keep their exact shape, size, and position relative to each other and to the skewer at all times: no wobble, no morphing, no deformation, no melting, no floating, no change in the number of pieces. Underneath, flames flicker and dance gently, the charcoal glows and pulses subtly, a few small embers occasionally drift upward, thin smoke rises and drifts naturally, faint heat shimmer distorts the air just above the coals. As the skewer turns, warm firelight reflections travel realistically across the glistening fat and the polished metal rod. Camera stays almost completely locked off, only an extremely subtle slow drift. Composition, framing, and the near-black background stay constant throughout.",
+      "prompt_language": "en",
+      "reference_elements": [],
+      "resolution": "1080p",
+      "speedramp": "auto",
+      "width": 1920
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260905_233643_ba918ee2-9ccc-4de5-bb4a-663a009188e0.mp4",
+    "status": "completed",
+    "thumbnail_url": "https://cdn.higgsfield.ai/user_3IvfAvOoZVEmmwemM62sSpEVcnK/hf_20260905_233643_ba918ee2-9ccc-4de5-bb4a-663a009188e0_thumbnail.webp"
+  }
+]
