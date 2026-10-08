@@ -23,9 +23,9 @@ export function Footer() {
         className={styles.bull}
       />
       <div ref={captionRef} className={styles.caption}>
-        <span className={styles.name}>Churrascaría</span>
+        <span className={styles.name}>Churrascaria</span>
         <span className={styles.place}>Chur · Schweiz</span>
-        <span className={styles.coming}>Coming October 2026</span>
+        <span className={styles.coming}>Ab 23. Oktober 2026 geöffnet</span>
       </div>
     </footer>
   );

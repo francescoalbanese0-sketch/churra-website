@@ -4,6 +4,7 @@ import styles from "./Header.module.css";
 const NAV_ITEMS = [
   { label: "Das Konzept", href: "#konzept" },
   { label: "Das Erlebnis", href: "#erlebnis" },
+  { label: "Speisekarte", href: "#speisekarte" },
   { label: "Firmen & Gruppen", href: "#firmen" },
   { label: "Kontakt", href: "#kontakt" },
 ];
@@ -24,11 +25,11 @@ export function Header() {
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
-      <a href="#hero" className={styles.brand} aria-label="Churra Churrascaría — Startseite">
-        <img src="/brand/churra-logo.png" alt="Churra — Churrascaría Brazilian Steakhouse" className={styles.logo} />
+      <a href="#hero" className={styles.brand} aria-label="Churra Churrascaria — Startseite">
+        <img src="/brand/churra-logo.png" alt="Churra — Churrascaria Brazilian" className={styles.logo} />
       </a>
 
-      <nav className={styles.nav} aria-label="Primary">
+      <nav className={styles.nav} aria-label="Hauptnavigation">
         {NAV_ITEMS.map((item) => (
           <a key={item.href} href={item.href} className={styles.navLink}>
             {item.label}

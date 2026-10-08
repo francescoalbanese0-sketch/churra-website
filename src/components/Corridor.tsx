@@ -20,7 +20,7 @@ interface CorridorProps {
  * Used sparingly — exactly two crossings on the whole site — so it reads as
  * a deliberate breath, not a repeated device.
  */
-export function Corridor({ word, height = "60vh" }: CorridorProps) {
+export function Corridor({ word, height = "40vh" }: CorridorProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const wordRef = useRef<HTMLParagraphElement>(null);
   const reducedMotion = useReducedMotion();

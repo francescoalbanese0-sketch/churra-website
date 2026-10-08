@@ -3,11 +3,7 @@ import { gsap } from "../animations/gsap";
 import { useReducedMotion } from "../lib/useReducedMotion";
 import styles from "./Location.module.css";
 
-const PHONE_DISPLAY = "+41 81 250 02 21";
-const PHONE_HREF = "tel:+41812500221";
-const EMAIL_DISPLAY = "info@ilpassaggiochur.ch";
-const EMAIL_HREF = "mailto:info@ilpassaggiochur.ch";
-const MAPS_HREF = "https://www.google.com/maps/search/?api=1&query=Theaterweg+7+7000+Chur+Schweiz";
+import { PHONE_DISPLAY, PHONE_HREF, EMAIL as EMAIL_DISPLAY, EMAIL_HREF, MAPS_HREF, OPENING_LABEL, HOURS } from "../lib/info";
 
 export function Location() {
   const rootRef = useRef<HTMLElement>(null);
@@ -19,6 +15,7 @@ export function Location() {
   const phoneRef = useRef<HTMLAnchorElement>(null);
   const emailRef = useRef<HTMLAnchorElement>(null);
   const dateRef = useRef<HTMLParagraphElement>(null);
+  const hoursRef = useRef<HTMLDivElement>(null);
   const reserveCtaRef = useRef<HTMLAnchorElement>(null);
   const mapsCtaRef = useRef<HTMLAnchorElement>(null);
   const reducedMotion = useReducedMotion();
@@ -32,6 +29,7 @@ export function Location() {
       phoneRef.current,
       emailRef.current,
       dateRef.current,
+      hoursRef.current,
       reserveCtaRef.current,
       mapsCtaRef.current,
     ].filter((el): el is NonNullable<typeof el> => !!el);
@@ -83,14 +81,14 @@ export function Location() {
       </svg>
 
       <p ref={eyebrowRef} className={`label ${styles.eyebrow}`}>
-        04 — Kontakt
+        05 — Kontakt
       </p>
 
       <p ref={nameRef} className={styles.name}>
         Churra
       </p>
       <p ref={taglineRef} className={`label ${styles.tagline}`}>
-        Churrascaría · Brazilian Steakhouse
+        Churrascaria · Brasilianisches Steakhouse
       </p>
 
       <p ref={addressRef} className={styles.address}>
@@ -111,12 +109,27 @@ export function Location() {
       </div>
 
       <p ref={dateRef} className={styles.date}>
-        Oktober 2026
+        {OPENING_LABEL}
       </p>
+
+      <div ref={hoursRef} className={styles.hours}>
+        <p className={`label ${styles.hoursTitle}`}>Öffnungszeiten</p>
+        <dl className={styles.hoursList}>
+          {HOURS.map((h) => (
+            <div key={h.day} className={styles.hoursRow}>
+              <dt>{h.day}</dt>
+              <dd>{h.times.join(" · ")}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
 
       <div className={styles.actions}>
         <a ref={reserveCtaRef} href={PHONE_HREF} className={styles.cta}>
           Tisch reservieren
+        </a>
+        <a href={EMAIL_HREF} className={`${styles.cta} ${styles.ctaGhost}`}>
+          Per E-Mail anfragen
         </a>
         <a
           ref={mapsCtaRef}

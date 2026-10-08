@@ -3,8 +3,7 @@ import { gsap } from "../animations/gsap";
 import { useReducedMotion } from "../lib/useReducedMotion";
 import styles from "./Christmas.module.css";
 
-const PHONE_DISPLAY = "081 250 02 21";
-const PHONE_HREF = "tel:+41812500221";
+import { PHONE_SHORT as PHONE_DISPLAY, PHONE_HREF } from "../lib/info";
 
 /** Commercial section for corporate/group Christmas dinners — same dark, fire-lit brand language, not a banner. */
 export function Christmas() {
@@ -81,7 +80,7 @@ export function Christmas() {
 
       <div className={styles.content}>
         <p ref={eyebrowRef} className={`label ${styles.eyebrow}`}>
-          03 — Firmen &amp; Gruppen
+          04 — Firmen &amp; Gruppen
         </p>
 
         <p className={styles.headline}>

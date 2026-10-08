@@ -9,6 +9,7 @@ import { Transformation } from "./sections/Transformation";
 import { Ritual } from "./sections/Ritual";
 import { Atmosphere } from "./sections/Atmosphere";
 import { Experience } from "./sections/Experience";
+import { Menu } from "./sections/Menu";
 import { Christmas } from "./sections/Christmas";
 import { Location } from "./sections/Location";
 import { Footer } from "./sections/Footer";
@@ -37,7 +38,7 @@ export default function App() {
         {/* The camera leaves the fire and travels deeper into the kitchen —
             pure world, no photograph, bridging Hero's video into
             Transformation's charcoal/grill imagery. */}
-        <Corridor word="Kitchen" />
+        <Corridor word="Küche" />
         <Transformation />
         <Ritual />
         <Atmosphere />
@@ -46,6 +47,7 @@ export default function App() {
             the last "Servieren" plate into the dining-room commercial
             moment, the "I want to be there" turn the brief asks for. */}
         <Corridor word="Restaurant" />
+        <Menu />
         <Christmas />
         <Location />
         <Footer />

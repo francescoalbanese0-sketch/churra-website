@@ -91,10 +91,10 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(4, 3, 2, 0.55) 0%,
-    rgba(4, 3, 2, 0.15) 30%,
-    rgba(4, 3, 2, 0.35) 65%,
-    rgba(4, 3, 2, 0.82) 100%
+    rgba(4, 3, 2, 0.6) 0%,
+    rgba(4, 3, 2, 0.35) 30%,
+    rgba(4, 3, 2, 0.5) 65%,
+    rgba(4, 3, 2, 0.85) 100%
   );
 }
 
@@ -124,14 +124,17 @@
   font-size: clamp(3rem, 9vw, 6.5rem);
   color: var(--gold);
   line-height: 1;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.75);
 }
 
 .note {
   font-family: var(--font-ui);
   font-weight: 300;
-  font-size: 0.95rem;
-  color: var(--ivory-dim);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ivory);
   max-width: 30ch;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.9);
 }
 
 .dots {

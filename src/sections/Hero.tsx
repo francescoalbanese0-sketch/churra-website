@@ -251,18 +251,18 @@ export function Hero({ reveal }: HeroProps) {
         </h1>
 
         <p ref={taglineRef} className={styles.tagline}>
-          Churrascaría · Brazilian Steakhouse
+          Churrascaria · Brasilianisches Steakhouse
         </p>
 
         <div ref={subRef} className={styles.sub}>
-          <p className={`label ${styles.subLine}`}>Oktober 2026</p>
-          <p className={`label ${styles.subLine}`}>Chur · Switzerland</p>
+          <p className={`label ${styles.subLine}`}>Eröffnung 23. Oktober 2026</p>
+          <p className={`label ${styles.subLine}`}>Theaterweg 7 · Chur</p>
         </div>
       </div>
 
       <div ref={cueRef} className={styles.cue} aria-hidden="true">
         <span className={styles.cueLine} />
-        <span className={styles.cueText}>Scroll</span>
+        <span className={styles.cueText}>Entdecken</span>
       </div>
     </section>
   );
