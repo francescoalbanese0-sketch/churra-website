@@ -2,10 +2,19 @@ import { useRef } from "react";
 import { useScrollReveal } from "../animations/useScrollReveal";
 import styles from "./Menu.module.css";
 
-const PRICES = [
-  { label: "Erwachsene", price: "CHF 69.–" },
-  { label: "Kinder", price: "CHF 35.–" },
-  { label: "Nur Buffet", price: "CHF 35.–" },
+const PRICE_GROUPS = [
+  {
+    title: "Abends · Rodízio",
+    rows: [
+      { label: "Erwachsene", price: "CHF 69.–" },
+      { label: "Kinder", price: "CHF 35.–" },
+      { label: "Nur Buffet", price: "CHF 35.–" },
+    ],
+  },
+  {
+    title: "Mittags · Buffet",
+    rows: [{ label: "Buffet", price: "CHF 23.–" }],
+  },
 ];
 
 const INCLUDED = ["Alle Fleischsorten des Rodízio", "Vollständiges Beilagenbuffet", "Pão de queijo", "Salatbuffet"];
@@ -64,19 +73,26 @@ export function Menu() {
       <div ref={headRef} className={styles.head}>
         <p className={`label ${styles.eyebrow}`}>03 — Speisekarte</p>
         <h2 className={styles.title}>Rodízio</h2>
-        <p className={styles.subtitle}>Brasilianische Fleischspezialitäten, direkt am Tisch tranchiert — so viel Sie möchten.</p>
+        <p className={styles.subtitle}>Am Abend: brasilianische Fleischspezialitäten, direkt am Tisch tranchiert — so viel Sie möchten.</p>
       </div>
 
       <div ref={pricesRef} className={styles.prices}>
-        {PRICES.map((p) => (
-          <div key={p.label} className={styles.priceRow}>
-            <span className={styles.priceLabel}>{p.label}</span>
-            <span className={styles.priceDots} aria-hidden="true" />
-            <span className={styles.priceValue}>{p.price}</span>
+        {PRICE_GROUPS.map((g) => (
+          <div key={g.title} className={styles.priceGroup}>
+            <p className={`label ${styles.priceGroupTitle}`}>{g.title}</p>
+            {g.rows.map((p) => (
+              <div key={p.label} className={styles.priceRow}>
+                <span className={styles.priceLabel}>{p.label}</span>
+                <span className={styles.priceDots} aria-hidden="true" />
+                <span className={styles.priceValue}>{p.price}</span>
+              </div>
+            ))}
           </div>
         ))}
         <p className={styles.included}>
-          Inbegriffen: {INCLUDED.join(" · ")}
+          Das Rodízio servieren wir am Abend, mittags gibt es unser Buffet.
+          <br />
+          Im Rodízio inbegriffen: {INCLUDED.join(" · ")}
           <br />
           Getränke sind nicht im Rodízio inbegriffen.
         </p>

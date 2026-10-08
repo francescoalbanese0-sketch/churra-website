@@ -43,6 +43,21 @@
   gap: 0.9rem;
 }
 
+.priceGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.priceGroup + .priceGroup {
+  margin-top: 1.2rem;
+}
+
+.priceGroupTitle {
+  color: var(--gold-dim);
+  margin-bottom: 0.2rem;
+}
+
 .priceRow {
   display: flex;
   align-items: baseline;
