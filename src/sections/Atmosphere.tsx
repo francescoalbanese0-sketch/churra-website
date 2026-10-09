@@ -74,7 +74,7 @@ export function Atmosphere() {
   return (
     <section ref={rootRef} className={styles.section}>
       <div className={styles.mediaWrap} aria-hidden="true">
-        <img ref={imgRef} src="/atmosphere/restaurant-table.jpg" alt="" className={styles.media} loading="lazy" />
+        <img ref={imgRef} src="/photos/tisch.jpg" alt="" className={styles.media} loading="lazy" />
         <div className={styles.scrim} />
       </div>
 

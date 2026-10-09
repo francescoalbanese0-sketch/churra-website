@@ -125,7 +125,7 @@ export function Location() {
       </div>
 
       <div className={styles.actions}>
-        <a ref={reserveCtaRef} href={PHONE_HREF} className={styles.cta}>
+        <a ref={reserveCtaRef} href="#reservieren" className={styles.cta}>
           Tisch reservieren
         </a>
         <a href={EMAIL_HREF} className={`${styles.cta} ${styles.ctaGhost}`}>

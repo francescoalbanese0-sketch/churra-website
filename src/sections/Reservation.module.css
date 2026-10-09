@@ -1,0 +1,597 @@
+.section {
+  position: relative;
+  padding: clamp(6rem, 14vh, 9rem) clamp(1rem, 4vw, 3rem);
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255, 106, 43, 0.08), transparent 70%),
+    var(--black);
+  scroll-margin-top: 4rem;
+}
+
+.head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: clamp(2.5rem, 6vh, 4rem);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 1;
+  color: var(--ivory);
+}
+
+.lead {
+  max-width: 40ch;
+  color: var(--ivory-dim);
+  line-height: 1.6;
+}
+
+.card {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  border: 1px solid rgba(201, 161, 90, 0.28);
+  background: rgba(18, 15, 13, 0.85);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+}
+
+/* ---- summary */
+.summary {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.6rem;
+  border-right: 1px solid rgba(201, 161, 90, 0.18);
+  background: rgba(7, 6, 5, 0.6);
+}
+
+.sumRow {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sumLabel {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+
+.sumValue {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--ivory);
+}
+
+.sumActive .sumLabel {
+  color: var(--gold);
+}
+
+.sumEdit {
+  position: absolute;
+  right: 0;
+  top: 1rem;
+  font-size: 0.72rem;
+  color: var(--gold-dim);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact {
+  margin-top: auto;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  color: var(--ivory-faint);
+}
+
+.contact a {
+  color: var(--gold);
+}
+
+/* ---- panel */
+.panel {
+  padding: clamp(1.5rem, 3.5vw, 2.6rem);
+  min-height: 520px;
+  scroll-margin-top: 5rem;
+}
+
+.steps {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+
+.steps li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+
+.steps li span {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1px solid rgba(237, 228, 211, 0.2);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  letter-spacing: 0;
+}
+
+.stepOn {
+  color: var(--gold) !important;
+}
+
+.stepOn span {
+  border-color: var(--gold) !important;
+  background: var(--gold);
+  color: var(--black);
+}
+
+.stepDone span {
+  border-color: var(--gold-dim) !important;
+  color: var(--gold);
+}
+
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  animation: rise 0.45s var(--ease-cinematic);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.stepTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: var(--ivory);
+}
+
+.counters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(201, 161, 90, 0.22);
+}
+
+.counter > span {
+  font-size: 0.9rem;
+  color: var(--ivory-dim);
+}
+
+.counter div {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.counter button {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(201, 161, 90, 0.45);
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+
+.counter button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.counter output {
+  min-width: 1.4rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--ivory);
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.serviceHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(201, 161, 90, 0.18);
+  padding-bottom: 0.5rem;
+}
+
+.serviceHead span {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.serviceHead small {
+  font-size: 0.78rem;
+  color: var(--ivory-faint);
+  text-align: right;
+}
+
+.slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+  gap: 0.5rem;
+}
+
+.slot {
+  padding: 0.7rem 0;
+  border: 1px solid rgba(201, 161, 90, 0.28);
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  color: var(--ivory);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.slot:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: rgba(201, 161, 90, 0.1);
+}
+
+.slot:disabled {
+  color: rgba(237, 228, 211, 0.2);
+  border-color: rgba(237, 228, 211, 0.06);
+  text-decoration: line-through;
+  cursor: default;
+}
+
+.slotOn {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: var(--black);
+}
+
+.menus {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.menuCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 1.5rem;
+  text-align: left;
+  border: 1px solid rgba(201, 161, 90, 0.3);
+  background: rgba(7, 6, 5, 0.5);
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.menuCard:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.menuOn {
+  border-color: var(--gold);
+  background: rgba(201, 161, 90, 0.1);
+}
+
+.menuName {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.8rem;
+  color: var(--gold);
+}
+
+.menuDesc {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ivory-dim);
+  margin-bottom: 0.4rem;
+}
+
+.menuPrice {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--ivory);
+}
+
+.menuPrice small {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+  margin-left: 0.3rem;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fields label > span {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+}
+
+.fields input,
+.fields textarea {
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ivory);
+  background: rgba(7, 6, 5, 0.7);
+  border: 1px solid rgba(201, 161, 90, 0.25);
+  padding: 0.8rem 0.9rem;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.fields input:focus,
+.fields textarea:focus {
+  border-color: var(--gold);
+}
+
+.fields textarea {
+  resize: vertical;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.consent {
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 0.7rem !important;
+}
+
+.consent input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.15rem;
+  accent-color: var(--gold);
+  flex: none;
+}
+
+.consent span {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-size: 0.85rem !important;
+  line-height: 1.5;
+  color: var(--ivory-dim) !important;
+}
+
+.hp {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.note {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--ivory-faint);
+}
+
+.note a {
+  color: var(--gold);
+}
+
+.error {
+  padding: 0.8rem 1rem;
+  border-left: 2px solid var(--ember);
+  background: rgba(255, 106, 43, 0.08);
+  font-size: 0.9rem;
+  color: var(--ivory);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.primary,
+.secondary {
+  display: inline-block;
+  padding: 1rem 2.2rem;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.primary {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.primary:hover:not(:disabled) {
+  background: transparent;
+  color: var(--gold);
+}
+
+.primary:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.secondary {
+  color: var(--ivory);
+  border-color: rgba(237, 228, 211, 0.3);
+}
+
+.secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.back {
+  align-self: flex-start;
+  font-size: 0.82rem;
+  color: var(--ivory-faint);
+}
+
+.back:hover {
+  color: var(--gold);
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  max-width: 34rem;
+  animation: rise 0.5s var(--ease-cinematic);
+}
+
+.message h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2rem;
+  color: var(--ivory);
+}
+
+.message p {
+  line-height: 1.65;
+  color: var(--ivory-dim);
+}
+
+.message strong {
+  color: var(--ivory);
+  font-weight: 500;
+}
+
+.check {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold) !important;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 860px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    border-right: none;
+    border-bottom: 1px solid rgba(201, 161, 90, 0.18);
+    padding: 1rem 1.2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+  }
+
+  .sumRow {
+    padding: 0.6rem 0;
+  }
+
+  .sumValue {
+    font-size: 0.95rem;
+  }
+
+  .sumEdit {
+    top: 0.6rem;
+  }
+
+  .contact {
+    display: none;
+  }
+
+  .panel {
+    min-height: 0;
+  }
+
+  .steps {
+    gap: 0.9rem;
+  }
+
+  .steps li {
+    font-size: 0;
+    gap: 0;
+  }
+
+  .steps li span {
+    font-size: 0.7rem;
+  }
+
+  .stepOn {
+    font-size: 0.66rem !important;
+    gap: 0.5rem !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .counters,
+  .menus,
+  .fields {
+    grid-template-columns: 1fr;
+  }
+
+  .slots {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

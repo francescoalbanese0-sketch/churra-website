@@ -9,7 +9,10 @@ import { Transformation } from "./sections/Transformation";
 import { Ritual } from "./sections/Ritual";
 import { Atmosphere } from "./sections/Atmosphere";
 import { Experience } from "./sections/Experience";
+import { Chef } from "./sections/Chef";
+import { Gallery } from "./sections/Gallery";
 import { Menu } from "./sections/Menu";
+import { Reservation } from "./sections/Reservation";
 import { Christmas } from "./sections/Christmas";
 import { Location } from "./sections/Location";
 import { Footer } from "./sections/Footer";
@@ -43,11 +46,14 @@ export default function App() {
         <Ritual />
         <Atmosphere />
         <Experience />
+        <Chef />
+        <Gallery />
         {/* The camera leaves the grill and arrives at the table — bridging
             the last "Servieren" plate into the dining-room commercial
             moment, the "I want to be there" turn the brief asks for. */}
         <Corridor word="Restaurant" />
         <Menu />
+        <Reservation />
         <Christmas />
         <Location />
         <Footer />

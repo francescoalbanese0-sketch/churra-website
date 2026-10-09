@@ -1,0 +1,121 @@
+.calendar {
+  width: 100%;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--ivory);
+  text-transform: capitalize;
+}
+
+.nav {
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid rgba(201, 161, 90, 0.35);
+  color: var(--gold);
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.nav:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: rgba(201, 161, 90, 0.08);
+}
+
+.nav:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+}
+
+.weekday {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ivory-faint);
+  text-align: center;
+  padding-bottom: 0.4rem;
+}
+
+.day {
+  aspect-ratio: 1;
+  min-height: 2.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.open {
+  color: var(--ivory);
+  border-color: rgba(201, 161, 90, 0.22);
+  background: rgba(201, 161, 90, 0.04);
+}
+
+.open:hover {
+  border-color: var(--gold);
+  background: rgba(201, 161, 90, 0.12);
+}
+
+.full {
+  color: var(--ivory-faint);
+  text-decoration: line-through;
+  cursor: default;
+}
+
+.closed {
+  color: rgba(237, 228, 211, 0.16);
+  cursor: default;
+}
+
+.selected,
+.selected:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
+  font-weight: 600;
+}
+
+.legend {
+  display: flex;
+  gap: 1.4rem;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--ivory-faint);
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.dotOpen,
+.dotFull {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 1px solid rgba(201, 161, 90, 0.5);
+}
+
+.dotFull {
+  border-color: rgba(237, 228, 211, 0.2);
+  background: repeating-linear-gradient(45deg, transparent 0 3px, rgba(237, 228, 211, 0.2) 3px 4px);
+}

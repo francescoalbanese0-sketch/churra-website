@@ -9,6 +9,8 @@ const EmberScene = lazy(() => import("../three/EmberScene"));
 export interface SequencePhase {
   image: string;
   alt: string;
+  /** CSS object-position for the full-screen crop, e.g. "50% 30%" */
+  focus?: string;
   label: string;
   note: string;
 }
@@ -170,7 +172,13 @@ export function PinnedSequence({ id, eyebrow, phases, introLine, ember, heat }: 
             className={styles.layer}
           >
             <div className={styles.imageWrap} data-role="image">
-              <img src={phase.image} alt={phase.alt} className={styles.image} loading="lazy" />
+              <img
+                src={phase.image}
+                alt={phase.alt}
+                className={styles.image}
+                style={phase.focus ? { objectPosition: phase.focus } : undefined}
+                loading="lazy"
+              />
               <div className={styles.scrim} />
             </div>
             <div className={styles.text} data-role="text">

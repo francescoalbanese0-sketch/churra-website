@@ -37,6 +37,10 @@ export function Header() {
         ))}
       </nav>
 
+      <a href="#reservieren" className={styles.reserve}>
+        Reservieren
+      </a>
+
       <button
         type="button"
         className={`${styles.toggle} ${menuOpen ? styles.toggleOpen : ""}`}
@@ -54,6 +58,9 @@ export function Header() {
             {item.label}
           </a>
         ))}
+        <a href="#reservieren" className={styles.mobileReserve} onClick={handleNavClick}>
+          Tisch reservieren
+        </a>
       </div>
     </header>
   );
