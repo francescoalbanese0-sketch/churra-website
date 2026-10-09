@@ -36,8 +36,21 @@ export function configured(): boolean {
 
 // ---------- Supabase REST
 
+/** Only the origin counts — tolerates a pasted ".../rest/v1/" or dashboard-style suffix. */
+function supabaseBase(): string {
+  const raw = env("SUPABASE_URL").trim();
+  try {
+    const u = new URL(raw.startsWith("http") ? raw : `https://${raw}`);
+    // a dashboard link (supabase.com/dashboard/project/<ref>/…) → the project's API host
+    const ref = u.hostname.endsWith("supabase.com") ? u.pathname.match(/project\/([a-z0-9]+)/i)?.[1] : null;
+    return ref ? `https://${ref}.supabase.co` : u.origin;
+  } catch {
+    return raw.replace(/\/+$/, "");
+  }
+}
+
 async function sb(path: string, init: RequestInit = {}): Promise<unknown> {
-  const url = env("SUPABASE_URL").replace(/\/$/, "") + "/rest/v1/" + path;
+  const url = supabaseBase() + "/rest/v1/" + path;
   const key = env("SUPABASE_SERVICE_ROLE_KEY");
   const res = await fetch(url, {
     ...init,
