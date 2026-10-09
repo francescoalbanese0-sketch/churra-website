@@ -43,7 +43,8 @@ async function sb(path: string, init: RequestInit = {}): Promise<unknown> {
     ...init,
     headers: {
       apikey: key,
-      authorization: `Bearer ${key}`,
+      // legacy service_role keys are JWTs and also go in Authorization; new sb_secret_ keys only in apikey
+      ...(key.startsWith("eyJ") ? { authorization: `Bearer ${key}` } : {}),
       "content-type": "application/json",
       ...(init.headers as Record<string, string> | undefined),
     },
