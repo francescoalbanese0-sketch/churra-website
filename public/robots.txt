@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /stornieren
+
+Sitemap: https://www.churra.ch/sitemap.xml
