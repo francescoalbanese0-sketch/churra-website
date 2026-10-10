@@ -27,6 +27,10 @@ export function Footer() {
         <span className={styles.place}>Chur · Schweiz</span>
         <span className={styles.coming}>Ab 23. Oktober 2026 geöffnet</span>
       </div>
+      <nav className={styles.legal}>
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </nav>
     </footer>
   );
 }

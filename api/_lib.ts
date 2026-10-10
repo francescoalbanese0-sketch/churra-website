@@ -111,6 +111,12 @@ export const db = {
       body: JSON.stringify({ p, check_capacity: checkCapacity }),
     })) as { ok: boolean; error?: string; remaining?: number; reservation?: Row };
   },
+  /** Data minimisation: reservations older than 12 months are deleted. */
+  async purgeOld() {
+    const d = new Date();
+    d.setFullYear(d.getFullYear() - 1);
+    await sb(`reservations?date=lt.${d.toISOString().slice(0, 10)}`, { method: "DELETE" });
+  },
   async closuresBetween(from: string, to: string): Promise<{ date: string; reason: string | null }[]> {
     return (await sb(`closures?select=*&date=gte.${enc(from)}&date=lte.${enc(to)}&order=date.asc`)) as {
       date: string;

@@ -41,7 +41,11 @@ export async function POST(req: Request): Promise<Response> {
           : `Für diese Zeit ist leider kein Tisch mehr frei${r.remaining ? ` (noch ${r.remaining} Plätze)` : ""}. Bitte wählen Sie eine andere Zeit oder rufen Sie uns an.`;
       return json({ error: msg }, 409);
     }
-    await Promise.all([mailGuestConfirmation(r.reservation), mailRestaurant(r.reservation, "neu")]);
+    await Promise.all([
+      mailGuestConfirmation(r.reservation),
+      mailRestaurant(r.reservation, "neu"),
+      db.purgeOld().catch((e) => console.error("purge", e)),
+    ]);
     const { cancel_token: _t, ...publicRow } = r.reservation;
     return json({ ok: true, reservation: publicRow });
   } catch (e) {

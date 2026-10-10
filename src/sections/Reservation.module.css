@@ -595,3 +595,8 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+.consent a {
+  color: var(--gold);
+  text-decoration: underline;
+}

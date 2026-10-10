@@ -50,3 +50,21 @@
   text-transform: uppercase;
   color: var(--gold-faint);
 }
+
+.legal {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.legal a {
+  color: var(--ivory-dim);
+}
+
+.legal a:hover {
+  color: var(--gold);
+}

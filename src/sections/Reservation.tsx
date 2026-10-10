@@ -387,7 +387,10 @@ export function Reservation() {
                     </label>
                     <label className={`${styles.full} ${styles.consent}`}>
                       <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-                      <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung gespeichert werden.</span>
+                      <span>
+                        Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung gespeichert werden (
+                        <a href="/datenschutz" target="_blank" rel="noopener">Datenschutz</a>).
+                      </span>
                     </label>
                   </div>
                   {error && (

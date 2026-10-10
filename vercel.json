@@ -1,12 +1,31 @@
 {
   "rewrites": [
-    { "source": "/admin", "destination": "/index.html" },
-    { "source": "/stornieren", "destination": "/index.html" }
+    {
+      "source": "/admin",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/stornieren",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/impressum",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/admin",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }
