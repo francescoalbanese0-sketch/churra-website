@@ -93,7 +93,7 @@ export function Christmas() {
         </p>
 
         <p ref={priceRef} className={styles.price}>
-          CHF 65.– <span>pro Person</span>
+          CHF 69.– <span>pro Person · exkl. Getränke</span>
         </p>
 
         <div className={styles.actions}>
