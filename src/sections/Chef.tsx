@@ -11,7 +11,7 @@ const LINES = [
 ];
 
 /** Number of knife strokes across the pinned scroll distance. */
-const STROKES = 7;
+const STROKES = 4;
 
 const smooth = (x: number) => {
   const t = Math.min(1, Math.max(0, x));
