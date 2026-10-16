@@ -1,4 +1,7 @@
 .footer {
+  /* above the fixed cinematic world layer (z-index 0) */
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,4 +70,19 @@
 
 .legal a:hover {
   color: var(--gold);
+}
+
+.insta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+}
+
+.insta:hover {
+  color: var(--ivory);
 }

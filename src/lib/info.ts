@@ -5,6 +5,8 @@ export const PHONE_SHORT = "081 250 02 21";
 export const PHONE_HREF = "tel:+41812500221";
 export const EMAIL = "info@churra.ch";
 export const EMAIL_HREF = "mailto:info@churra.ch";
+export const INSTAGRAM_HANDLE = "@churra_chur";
+export const INSTAGRAM_HREF = "https://www.instagram.com/churra_chur/";
 export const MAPS_HREF = "https://www.google.com/maps/search/?api=1&query=Theaterweg+7+7000+Chur+Schweiz";
 
 export const OPENING_LABEL = "Eröffnung am 23. Oktober 2026";

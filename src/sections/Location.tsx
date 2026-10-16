@@ -3,7 +3,7 @@ import { gsap } from "../animations/gsap";
 import { useReducedMotion } from "../lib/useReducedMotion";
 import styles from "./Location.module.css";
 
-import { PHONE_DISPLAY, PHONE_HREF, EMAIL as EMAIL_DISPLAY, EMAIL_HREF, MAPS_HREF, OPENING_LABEL, HOURS } from "../lib/info";
+import { PHONE_DISPLAY, PHONE_HREF, EMAIL as EMAIL_DISPLAY, EMAIL_HREF, MAPS_HREF, OPENING_LABEL, HOURS, INSTAGRAM_HANDLE, INSTAGRAM_HREF } from "../lib/info";
 
 export function Location() {
   const rootRef = useRef<HTMLElement>(null);
@@ -105,6 +105,9 @@ export function Location() {
         </a>
         <a ref={emailRef} href={EMAIL_HREF} className={styles.email}>
           {EMAIL_DISPLAY}
+        </a>
+        <a href={INSTAGRAM_HREF} target="_blank" rel="noopener noreferrer" className={styles.email}>
+          Instagram {INSTAGRAM_HANDLE}
         </a>
       </div>
 

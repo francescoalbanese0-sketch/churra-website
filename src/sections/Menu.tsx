@@ -122,6 +122,19 @@ export function Menu() {
           Bitte informieren Sie unser Team über Lebensmittelallergien oder Unverträglichkeiten.
         </p>
       </div>
+
+      <div className={styles.drinks}>
+        <h3 className={styles.groupTitle}>Getränke &amp; Weine</h3>
+        <p className={styles.itemNote}>Caipirinha, Signature Cocktails, Bier, Aperitifs – und eine Weinkarte von Prosecco bis Sassicaia.</p>
+        <div className={styles.drinkLinks}>
+          <a href="/karten/churra-getraenkekarte.pdf" target="_blank" rel="noopener" className={styles.drinkBtn}>
+            Getränkekarte
+          </a>
+          <a href="/karten/churra-weinkarte.pdf" target="_blank" rel="noopener" className={styles.drinkBtn}>
+            Weinkarte
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

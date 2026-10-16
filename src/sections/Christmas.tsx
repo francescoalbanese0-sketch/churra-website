@@ -80,7 +80,7 @@ export function Christmas() {
 
       <div className={styles.content}>
         <p ref={eyebrowRef} className={`label ${styles.eyebrow}`}>
-          04 — Firmen &amp; Gruppen
+          04 — Weihnachten
         </p>
 
         <p className={styles.headline}>

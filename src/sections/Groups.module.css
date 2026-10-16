@@ -1,0 +1,176 @@
+.section {
+  position: relative;
+  z-index: 1;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(5rem, 12vh, 8rem) clamp(1.25rem, 5vw, 4rem);
+  overflow: hidden;
+  background: var(--black);
+  border-top: 1px solid rgba(201, 161, 90, 0.25);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+}
+
+.media img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 62%;
+  object-fit: cover;
+  object-position: 55% 35%;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--black) 0%, var(--black) 38%, rgba(4, 3, 2, 0.75) 55%, rgba(4, 3, 2, 0.15) 100%);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  max-width: 34rem;
+}
+
+.eyebrow {
+  color: var(--gold);
+}
+
+.title {
+  margin: 0.6rem 0 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 1.02;
+  color: var(--ivory);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--ivory-dim);
+}
+
+.text a {
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.textTitle {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ivory);
+}
+
+.box {
+  position: relative;
+  padding: 2.2rem 1.8rem 1.6rem;
+  border: 1px solid var(--gold);
+  outline: 1px solid rgba(201, 161, 90, 0.35);
+  outline-offset: 5px;
+  background: rgba(4, 3, 2, 0.6);
+  text-align: center;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.45rem 1.1rem;
+  background: var(--red, #b5120d);
+  color: #fff4e0;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.boxTitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.5rem, 3.6vw, 2rem);
+  line-height: 1.2;
+  color: var(--ivory);
+}
+
+.boxStrong {
+  margin-top: 0.8rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.boxNote {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ivory-dim);
+}
+
+.actions {
+  display: flex;
+}
+
+.cta {
+  display: inline-block;
+  padding: 0.95rem 2rem;
+  border: 1px solid var(--gold);
+  color: var(--ivory);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.cta:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+@media (max-width: 780px) {
+  .section {
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 0;
+  }
+  .media {
+    position: relative;
+    inset: auto;
+    height: 46vh;
+    margin: 0 calc(-1 * clamp(1.25rem, 5vw, 4rem)) -4rem;
+  }
+  .media img {
+    width: 100%;
+  }
+  .scrim {
+    background: linear-gradient(180deg, rgba(4, 3, 2, 0.1) 0%, rgba(4, 3, 2, 0.35) 60%, var(--black) 100%);
+  }
+  .content {
+    max-width: none;
+  }
+  .actions {
+    justify-content: center;
+  }
+}

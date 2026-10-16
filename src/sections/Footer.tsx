@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useScrollReveal } from "../animations/useScrollReveal";
 import styles from "./Footer.module.css";
+import { INSTAGRAM_HANDLE, INSTAGRAM_HREF } from "../lib/info";
 
 /**
  * The closing signature: the story ends, the fire disappears, the bull
@@ -27,6 +28,14 @@ export function Footer() {
         <span className={styles.place}>Chur · Schweiz</span>
         <span className={styles.coming}>Ab 23. Oktober 2026 geöffnet</span>
       </div>
+      <a href={INSTAGRAM_HREF} target="_blank" rel="noopener noreferrer" className={styles.insta} aria-label="Churra auf Instagram">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4.2" />
+          <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none" />
+        </svg>
+        <span>{INSTAGRAM_HANDLE}</span>
+      </a>
       <nav className={styles.legal}>
         <a href="/impressum">Impressum</a>
         <a href="/datenschutz">Datenschutz</a>
