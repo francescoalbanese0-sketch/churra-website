@@ -92,13 +92,13 @@ export function Transformation() {
 
       <div ref={contentRef} className={styles.content}>
         <p ref={eyebrowRef} className={`label ${styles.eyebrow}`}>
-          01 — Die Verwandlung
+          01 — Das Konzept
         </p>
         <p ref={line1Ref} className={styles.line}>
-          Viele Jahre lang eine italienische Adresse.
+          Feuer, Fleisch und brasilianische Gastfreundschaft.
         </p>
         <p ref={line2Ref} className={`${styles.line} ${styles.ember}`}>
-          Jetzt wird daraus Churra.
+          Das ist Churra.
         </p>
       </div>
     </section>

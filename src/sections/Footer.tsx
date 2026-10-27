@@ -26,7 +26,7 @@ export function Footer() {
       <div ref={captionRef} className={styles.caption}>
         <span className={styles.name}>Churrascaria</span>
         <span className={styles.place}>Chur · Schweiz</span>
-        <span className={styles.coming}>Ab 23. Oktober 2026 geöffnet</span>
+        <span className={styles.coming}>Jetzt geöffnet</span>
       </div>
       <a href={INSTAGRAM_HREF} target="_blank" rel="noopener noreferrer" className={styles.insta} aria-label="Churra auf Instagram">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.6">

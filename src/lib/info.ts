@@ -9,7 +9,7 @@ export const INSTAGRAM_HANDLE = "@churra_chur";
 export const INSTAGRAM_HREF = "https://www.instagram.com/churra_chur/";
 export const MAPS_HREF = "https://www.google.com/maps/search/?api=1&query=Theaterweg+7+7000+Chur+Schweiz";
 
-export const OPENING_LABEL = "Eröffnung am 23. Oktober 2026";
+export const OPENING_LABEL = "Jetzt geöffnet – wir freuen uns auf Sie";
 
 export const HOURS: { day: string; times: string[] }[] = [
   { day: "Montag", times: ["11:30–13:45"] },

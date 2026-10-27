@@ -65,7 +65,7 @@ export function Loader({ onDone }: LoaderProps) {
         <div className={styles.ember} />
       </div>
       <span ref={markRef} className={styles.mark}>
-        IL PASSAGGIO
+        CHURRA
       </span>
     </div>
   );

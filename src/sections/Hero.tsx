@@ -234,16 +234,6 @@ export function Hero({ reveal }: HeroProps) {
       <div className={styles.content}>
         <h1 className={styles.headline}>
           <span className={styles.lineClip}>
-            <span ref={line1} className={`${styles.line} ${styles.lineQuiet}`}>
-              IL PASSAGGIO
-            </span>
-          </span>
-          <span className={styles.lineClip}>
-            <span ref={line2} className={`${styles.line} ${styles.lineTiny}`}>
-              wird zu
-            </span>
-          </span>
-          <span className={styles.lineClip}>
             <span ref={line3} className={`${styles.line} ${styles.lineDominant}`}>
               CHURRA
             </span>
@@ -255,7 +245,7 @@ export function Hero({ reveal }: HeroProps) {
         </p>
 
         <div ref={subRef} className={styles.sub}>
-          <p className={`label ${styles.subLine}`}>Eröffnung 23. Oktober 2026</p>
+          <p className={`label ${styles.subLine}`}>Jetzt geöffnet</p>
           <p className={`label ${styles.subLine}`}>Theaterweg 7 · Chur</p>
         </div>
       </div>
