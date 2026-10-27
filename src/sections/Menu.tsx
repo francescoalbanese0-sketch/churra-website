@@ -98,13 +98,6 @@ export function Menu() {
         </p>
       </div>
 
-      <div id="takeaway" className={styles.takeaway}>
-        <p className={`label ${styles.takeawayLabel}`}>Takeaway</p>
-        <h3 className={styles.takeawayTitle}>Mittagsbuffet zum Mitnehmen</h3>
-        <p className={styles.takeawayPrice}>CHF 14.50</p>
-        <p className={styles.takeawayNote}>inkl. 1 Softgetränk · Montag bis Freitag, 11:30–13:45</p>
-      </div>
-
       <div ref={cutsRef} className={styles.cuts}>
         {CUTS.map((group) => (
           <div key={group.title} className={styles.group}>
@@ -128,6 +121,14 @@ export function Menu() {
         <p className={styles.small}>
           Bitte informieren Sie unser Team über Lebensmittelallergien oder Unverträglichkeiten.
         </p>
+      </div>
+
+      <div id="takeaway" className={styles.takeaway}>
+        <p className={`label ${styles.takeawayLabel}`}>Takeaway · Mittags</p>
+        <h3 className={styles.takeawayTitle}>Buffet zum Mitnehmen</h3>
+        <p className={styles.takeawayPrice}>CHF 14.50</p>
+        <p className={styles.takeawayStrong}>Nur Buffet – ohne Rodízio</p>
+        <p className={styles.takeawayNote}>inkl. 1 Softgetränk · Montag bis Freitag, 11:30–13:45</p>
       </div>
 
       <div className={styles.drinks}>
