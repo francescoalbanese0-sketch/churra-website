@@ -13,7 +13,10 @@ const PRICE_GROUPS = [
   },
   {
     title: "Mittags · Buffet",
-    rows: [{ label: "Buffet", price: "CHF 23.–" }],
+    rows: [
+      { label: "Buffet", price: "CHF 23.–" },
+      { label: "Buffet Takeaway inkl. 1 Softgetränk", price: "CHF 14.50" },
+    ],
   },
 ];
 
