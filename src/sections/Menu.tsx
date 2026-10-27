@@ -13,10 +13,7 @@ const PRICE_GROUPS = [
   },
   {
     title: "Mittags · Buffet",
-    rows: [
-      { label: "Buffet", price: "CHF 23.–" },
-      { label: "Buffet Takeaway inkl. 1 Softgetränk", price: "CHF 14.50" },
-    ],
+    rows: [{ label: "Buffet", price: "CHF 23.–" }],
   },
 ];
 
@@ -99,6 +96,13 @@ export function Menu() {
           <br />
           Getränke sind nicht im Rodízio inbegriffen.
         </p>
+      </div>
+
+      <div id="takeaway" className={styles.takeaway}>
+        <p className={`label ${styles.takeawayLabel}`}>Takeaway</p>
+        <h3 className={styles.takeawayTitle}>Mittagsbuffet zum Mitnehmen</h3>
+        <p className={styles.takeawayPrice}>CHF 14.50</p>
+        <p className={styles.takeawayNote}>inkl. 1 Softgetränk · Montag bis Freitag, 11:30–13:45</p>
       </div>
 
       <div ref={cutsRef} className={styles.cuts}>

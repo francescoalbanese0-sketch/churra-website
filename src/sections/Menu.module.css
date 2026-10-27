@@ -208,3 +208,41 @@
   background: var(--gold);
   color: var(--black);
 }
+
+.takeaway {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  width: min(100%, 520px);
+  padding: 1.8rem 1.5rem 1.6rem;
+  border: 1px solid var(--gold);
+  outline: 1px solid rgba(201, 161, 90, 0.35);
+  outline-offset: 5px;
+  text-align: center;
+  scroll-margin-top: 6rem;
+}
+
+.takeawayLabel {
+  color: var(--gold);
+}
+
+.takeawayTitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  color: var(--ivory);
+}
+
+.takeawayPrice {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4.4vw, 2.4rem);
+  color: var(--gold);
+}
+
+.takeawayNote {
+  font-size: 0.85rem;
+  color: var(--ivory-dim);
+}

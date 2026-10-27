@@ -5,6 +5,7 @@ const NAV_ITEMS = [
   { label: "Das Konzept", href: "#konzept" },
   { label: "Das Erlebnis", href: "#erlebnis" },
   { label: "Speisekarte", href: "#speisekarte" },
+  { label: "Takeaway", href: "#takeaway" },
   { label: "Firmen & Gruppen", href: "#firmen" },
   { label: "Kontakt", href: "#kontakt" },
 ];
