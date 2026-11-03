@@ -262,7 +262,7 @@ export default function Admin() {
               type="button"
               className={styles.ghost}
               onClick={() => {
-                const reason = window.prompt("Tag für Online-Reservierungen schliessen. Grund (optional):", "");
+                const reason = window.prompt("Tag für Online-Reservierungen sperren.\nGrund – mit „Ausgebucht“ sehen die Gäste den Tag als ausgebucht:", "Ausgebucht");
                 if (reason !== null) act({ action: "close", date, reason });
               }}
             >
@@ -375,7 +375,12 @@ function ServiceBlock({
                   </em>
                   {r.source !== "online" ? ` · ${r.source}` : ""}
                 </small>
-                {r.notes && <span className={styles.notes}>{r.notes}</span>}
+                {r.notes?.startsWith("★ Rabattcode") && (
+                  <span className={styles.promo}>{r.notes.split("\n")[0].replace("★ ", "")}</span>
+                )}
+                {r.notes && r.notes.replace(/^★ Rabattcode[^\n]*\n?/, "") && (
+                  <span className={styles.notes}>{r.notes.replace(/^★ Rabattcode[^\n]*\n?/, "")}</span>
+                )}
               </button>
               <span className={styles.contact}>
                 {r.phone && <a href={`tel:${r.phone.replace(/[^\d+]/g, "")}`}>{r.phone}</a>}

@@ -199,3 +199,13 @@ export function validateReservation(r: Partial<ReservationInput>, opts: { online
   if (r.notes && r.notes.length > 1000) return "Die Anmerkung ist zu lang.";
   return null;
 }
+
+/** Partner discount codes guests can enter when booking online (case-insensitive). */
+export const DISCOUNT_CODES: Record<string, { percent: number; label: string }> = {
+  CHURGR: { percent: 10, label: "10 % Rabatt" },
+};
+
+export function discountFor(code: string | null | undefined) {
+  const c = (code ?? "").trim().toUpperCase().replace(/[\s"“”„']/g, "");
+  return c && DISCOUNT_CODES[c] ? { code: c, ...DISCOUNT_CODES[c] } : null;
+}

@@ -5,6 +5,7 @@ import {
   MENU_LABEL,
   OPENING_DATE,
   PRICES,
+  discountFor,
   formatDateDE,
   formatGuests,
   validateReservation,
@@ -52,6 +53,7 @@ export function Reservation() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
+  const [code, setCode] = useState("");
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(""); // honeypot
   const [busy, setBusy] = useState(false);
@@ -119,9 +121,10 @@ export function Reservation() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!date || !time || !menu) return;
-    const payload = { date, time, adults, children, menu, name, email, phone, notes, website };
+    const payload = { date, time, adults, children, menu, name, email, phone, notes, website, code };
     const invalid = validateReservation(payload, { online: true });
     if (invalid) return setError(invalid);
+    if (code.trim() && !discountFor(code)) return setError("Dieser Rabattcode ist leider ungültig.");
     if (!consent) return setError("Bitte bestätigen Sie die Speicherung Ihrer Angaben.");
     setBusy(true);
     setError(null);
@@ -380,6 +383,23 @@ export function Reservation() {
                         onChange={(e) => setNotes(e.target.value)}
                         placeholder="Allergien, Kinderstuhl, Anlass, Aufteilung Rodízio/Buffet …"
                       />
+                    </label>
+                    <label className={styles.full}>
+                      <span>Rabattcode (optional)</span>
+                      <input
+                        value={code}
+                        onChange={(e) => setCode(e.target.value.toUpperCase())}
+                        autoComplete="off"
+                        autoCapitalize="characters"
+                        spellCheck={false}
+                        placeholder="z. B. Gutscheincode eines Partners"
+                      />
+                      {code.trim() &&
+                        (discountFor(code) ? (
+                          <small className={styles.codeOk}>✓ {discountFor(code)!.label} – wird beim Bezahlen im Restaurant abgezogen</small>
+                        ) : (
+                          <small className={styles.codeBad}>Code unbekannt</small>
+                        ))}
                     </label>
                     <label className={styles.hp} aria-hidden="true">
                       Website

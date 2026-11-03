@@ -600,3 +600,18 @@
   color: var(--gold);
   text-decoration: underline;
 }
+
+.codeOk,
+.codeBad {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.codeOk {
+  color: var(--gold);
+}
+
+.codeBad {
+  color: #e07a6a;
+}

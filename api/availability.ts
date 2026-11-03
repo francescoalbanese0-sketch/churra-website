@@ -10,6 +10,9 @@ import {
 } from "../shared/booking.js";
 import { configured, db, json, usage } from "./_lib.js";
 
+/** A day closed in the agenda with the reason "Ausgebucht" (or "Full"/"voll") is shown to guests as fully booked. */
+const isFull = (reason: string | null | undefined) => /ausgebucht|full|voll/i.test(reason ?? "");
+
 /**
  * GET /api/availability?month=YYYY-MM            → which days of the month can still be booked
  * GET /api/availability?date=YYYY-MM-DD&guests=N → bookable arrival times for that day
@@ -29,11 +32,16 @@ export async function GET(req: Request): Promise<Response> {
         db.closuresBetween(from, to),
       ]);
       const used = usage(rows);
-      const closed = new Set(closures.map((c) => c.date));
+      const closed = new Set(closures.filter((c) => !isFull(c.reason)).map((c) => c.date));
+      const fullDays = new Set(closures.filter((c) => isFull(c.reason)).map((c) => c.date));
       const days: Record<string, "open" | "full" | "closed"> = {};
       for (let d = from; d <= to; d = addDays(d, 1)) {
         if (!dateBookable(d) || closed.has(d)) {
           days[d] = "closed";
+          continue;
+        }
+        if (fullDays.has(d)) {
+          days[d] = "full";
           continue;
         }
         const anyRoom = servicesFor(d).some(

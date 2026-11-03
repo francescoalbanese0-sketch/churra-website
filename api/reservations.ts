@@ -1,12 +1,12 @@
-import { dateBookable, serviceAt, timeBookable, validateReservation, type ReservationInput } from "../shared/booking.js";
+import { dateBookable, discountFor, serviceAt, timeBookable, validateReservation, type ReservationInput } from "../shared/booking.js";
 import { configured, db, json, mailGuestConfirmation, mailRestaurant } from "./_lib.js";
 
 /** POST /api/reservations — a guest books a table online. */
 export async function POST(req: Request): Promise<Response> {
   if (!configured()) return json({ error: "Die Online-Reservierung ist noch nicht aktiv. Bitte rufen Sie uns an." }, 503);
-  let body: Partial<ReservationInput> & { website?: string };
+  let body: Partial<ReservationInput> & { website?: string; code?: string };
   try {
-    body = (await req.json()) as Partial<ReservationInput> & { website?: string };
+    body = (await req.json()) as Partial<ReservationInput> & { website?: string; code?: string };
   } catch {
     return json({ error: "Ungültige Anfrage." }, 400);
   }
@@ -25,6 +25,11 @@ export async function POST(req: Request): Promise<Response> {
     notes: String(body.notes ?? "").trim(),
   } as ReservationInput;
 
+  const rawCode = String(body.code ?? "").trim();
+  const discount = discountFor(rawCode);
+  if (rawCode && !discount) return json({ error: "Dieser Rabattcode ist leider ungültig." }, 400);
+  if (discount) input.notes = `★ Rabattcode ${discount.code} – ${discount.label}${input.notes ? "\n" + input.notes : ""}`;
+
   const service = serviceAt(input.date, input.time);
   if (service && !service.menuChoice) input.menu = "buffet";
   const invalid = validateReservation(input, { online: true });
@@ -37,7 +42,7 @@ export async function POST(req: Request): Promise<Response> {
     if (!r.ok || !r.reservation) {
       const msg =
         r.error === "closed"
-          ? "An diesem Tag sind wir leider geschlossen."
+          ? "An diesem Tag sind wir leider ausgebucht oder geschlossen. Bitte wählen Sie einen anderen Tag oder rufen Sie uns an."
           : `Für diese Zeit ist leider kein Tisch mehr frei${r.remaining ? ` (noch ${r.remaining} Plätze)` : ""}. Bitte wählen Sie eine andere Zeit oder rufen Sie uns an.`;
       return json({ error: msg }, 409);
     }
