@@ -1,4 +1,4 @@
-import { dateBookable, discountFor, serviceAt, timeBookable, validateReservation, type ReservationInput } from "../shared/booking.js";
+import { dateBookable, discountFor, discountProblem, serviceAt, timeBookable, validateReservation, type ReservationInput } from "../shared/booking.js";
 import { configured, db, json, mailGuestConfirmation, mailRestaurant } from "./_lib.js";
 
 /** POST /api/reservations — a guest books a table online. */
@@ -28,10 +28,12 @@ export async function POST(req: Request): Promise<Response> {
   const rawCode = String(body.code ?? "").trim();
   const discount = discountFor(rawCode);
   if (rawCode && !discount) return json({ error: "Dieser Rabattcode ist leider ungültig." }, 400);
-  if (discount) input.notes = `★ Rabattcode ${discount.code} – ${discount.label}${input.notes ? "\n" + input.notes : ""}`;
-
   const service = serviceAt(input.date, input.time);
   if (service && !service.menuChoice) input.menu = "buffet";
+  const notValid = discount && discountProblem(discount, input);
+  if (notValid) return json({ error: notValid }, 400);
+  if (discount) input.notes = `★ Rabattcode ${discount.code} – ${discount.label}${input.notes ? "\n" + input.notes : ""}`;
+
   const invalid = validateReservation(input, { online: true });
   if (invalid) return json({ error: invalid }, 400);
   if (!service || !dateBookable(input.date) || !timeBookable(input.date, input.time))

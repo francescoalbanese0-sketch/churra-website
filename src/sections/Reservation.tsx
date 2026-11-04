@@ -6,6 +6,7 @@ import {
   OPENING_DATE,
   PRICES,
   discountFor,
+  discountProblem,
   formatDateDE,
   formatGuests,
   validateReservation,
@@ -125,6 +126,8 @@ export function Reservation() {
     const invalid = validateReservation(payload, { online: true });
     if (invalid) return setError(invalid);
     if (code.trim() && !discountFor(code)) return setError("Dieser Rabattcode ist leider ungültig.");
+    const codeProblem = discountFor(code) && discountProblem(discountFor(code)!, { date, time, menu });
+    if (codeProblem) return setError(codeProblem);
     if (!consent) return setError("Bitte bestätigen Sie die Speicherung Ihrer Angaben.");
     setBusy(true);
     setError(null);
@@ -395,7 +398,9 @@ export function Reservation() {
                         placeholder="z. B. Gutscheincode eines Partners"
                       />
                       {code.trim() &&
-                        (discountFor(code) ? (
+                        (discountFor(code) && discountProblem(discountFor(code)!, { date, time, menu }) ? (
+                          <small className={styles.codeBad}>{discountProblem(discountFor(code)!, { date, time, menu })}</small>
+                        ) : discountFor(code) ? (
                           <small className={styles.codeOk}>✓ {discountFor(code)!.label} – wird beim Bezahlen im Restaurant abgezogen</small>
                         ) : (
                           <small className={styles.codeBad}>Code unbekannt</small>

@@ -200,12 +200,50 @@ export function validateReservation(r: Partial<ReservationInput>, opts: { online
   return null;
 }
 
-/** Partner discount codes guests can enter when booking online (case-insensitive). */
-export const DISCOUNT_CODES: Record<string, { percent: number; label: string }> = {
+/**
+ * Discount codes guests can enter when booking online (case-insensitive).
+ * Optional limits: weekdays (0 = Sunday … 6 = Saturday), service and menu.
+ */
+export interface DiscountCode {
+  percent: number;
+  label: string;
+  days?: number[];
+  service?: ServiceId;
+  menu?: MenuChoice;
+  /** shown to the guest when the booking does not match the limits */
+  rule?: string;
+}
+
+export const DISCOUNT_CODES: Record<string, DiscountCode> = {
   CHURGR: { percent: 10, label: "10 % Rabatt" },
+  RODIZIO20: {
+    percent: 20,
+    label: "20 % Rabatt auf das Rodízio",
+    days: [2, 3],
+    service: "dinner",
+    menu: "rodizio",
+    rule: "Der Code RODIZIO20 gilt nur Dienstag- und Mittwochabend für das Rodízio.",
+  },
 };
 
 export function discountFor(code: string | null | undefined) {
-  const c = (code ?? "").trim().toUpperCase().replace(/[\s"“”„']/g, "");
+  const c = (code ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim()
+    .toUpperCase()
+    .replace(/[\s"“”„'%-]/g, "");
   return c && DISCOUNT_CODES[c] ? { code: c, ...DISCOUNT_CODES[c] } : null;
+}
+
+/** Why a valid code does not apply to this booking (null = it applies). */
+export function discountProblem(
+  d: DiscountCode,
+  b: { date?: string | null; time?: string | null; menu?: MenuChoice | null },
+): string | null {
+  const msg = d.rule ?? "Dieser Rabattcode gilt nicht für die gewählte Reservierung.";
+  if (d.days && b.date && !d.days.includes(weekdayOf(b.date))) return msg;
+  if (d.service && b.date && b.time && serviceAt(b.date, b.time)?.id !== d.service) return msg;
+  if (d.menu && b.menu && b.menu !== d.menu) return msg;
+  return null;
 }
