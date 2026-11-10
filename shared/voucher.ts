@@ -49,6 +49,11 @@ export const normalizeCode = (s: string) => {
   const raw = s.toUpperCase().replace(/[^A-Z0-9]/g, "");
   return raw.length === 10 && raw.startsWith("CH") ? raw.slice(2) : raw;
 };
+/** True for a full voucher code as printed ("CH-7KQ2-M9XA", case and dashes don't matter). */
+export const isVoucherCode = (s: string) => {
+  const raw = s.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  return raw.length === 10 && raw.startsWith("CH") && [...raw.slice(2)].every((c) => CODE_ALPHABET.includes(c));
+};
 export const formatCode = (raw: string) => {
   const c = normalizeCode(raw);
   return `CH-${c.slice(0, 4)}-${c.slice(4, 8)}`;

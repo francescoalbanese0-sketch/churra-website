@@ -1,3 +1,5 @@
+import { formatCHF, formatCode, isVoucherCode } from "../shared/voucher.js";
+import { vouchers } from "./_voucher.js";
 import { dateBookable, discountFor, discountProblem, serviceAt, timeBookable, validateReservation, type ReservationInput } from "../shared/booking.js";
 import { configured, db, json, mailGuestConfirmation, mailRestaurant } from "./_lib.js";
 
@@ -27,7 +29,15 @@ export async function POST(req: Request): Promise<Response> {
 
   const rawCode = String(body.code ?? "").trim();
   const discount = discountFor(rawCode);
-  if (rawCode && !discount) return json({ error: "Dieser Rabattcode ist leider ungültig." }, 400);
+  const voucherCode = !discount && isVoucherCode(rawCode) ? formatCode(rawCode) : null;
+  if (rawCode && !discount && !voucherCode) return json({ error: "Dieser Rabattcode ist leider ungültig." }, 400);
+  if (voucherCode) {
+    const v = await vouchers.byCode(voucherCode).catch(() => null);
+    const today = new Date().toISOString().slice(0, 10);
+    if (!v || v.status !== "active" || Number(v.balance) <= 0 || v.expires_at < today)
+      return json({ error: "Dieser Gutschein ist ungültig, abgelaufen oder bereits eingelöst." }, 400);
+    input.notes = `★ Gutschein ${v.code} – Guthaben ${formatCHF(Number(v.balance))}${input.notes ? "\n" + input.notes : ""}`;
+  }
   const service = serviceAt(input.date, input.time);
   if (service && !service.menuChoice) input.menu = "buffet";
   const notValid = discount && discountProblem(discount, input);

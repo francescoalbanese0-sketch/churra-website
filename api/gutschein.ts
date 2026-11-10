@@ -1,4 +1,4 @@
-import { validateVoucherOrder, type VoucherOrder } from "../shared/voucher.js";
+import { formatCode, isVoucherCode, validateVoucherOrder, type VoucherOrder } from "../shared/voucher.js";
 import { configured, json } from "./_lib.js";
 import { createCheckout, fulfill, publicVoucher, stripeConfigured, vouchers } from "./_voucher.js";
 
@@ -6,6 +6,7 @@ import { createCheckout, fulfill, publicVoucher, stripeConfigured, vouchers } fr
  * POST {amount, buyerName, buyerEmail, recipientName?, message?}  → {url} (Stripe Checkout)
  * GET  ?session_id=cs_…   → after payment: creates the voucher if needed → {voucher, link}
  * GET  ?c=CODE&t=TOKEN    → the voucher page (print view)
+ * GET  ?check=CODE        → {valid, balance} — for the reservation form
  */
 export async function POST(req: Request): Promise<Response> {
   if (!configured() || !stripeConfigured()) return json({ error: "Der Gutschein-Shop ist noch nicht aktiviert." }, 503);
@@ -37,6 +38,13 @@ export async function GET(req: Request): Promise<Response> {
   if (!configured()) return json({ error: "not_configured" }, 503);
   const u = new URL(req.url);
   try {
+    const check = u.searchParams.get("check");
+    if (check !== null) {
+      const v = isVoucherCode(check) ? await vouchers.byCode(formatCode(check)) : null;
+      const today = new Date().toISOString().slice(0, 10);
+      const valid = Boolean(v && v.status === "active" && Number(v.balance) > 0 && v.expires_at >= today);
+      return json({ valid, balance: valid ? Number(v!.balance) : 0 });
+    }
     const sessionId = u.searchParams.get("session_id");
     if (sessionId) {
       if (!/^cs_[A-Za-z0-9_]+$/.test(sessionId)) return json({ error: "session" }, 400);

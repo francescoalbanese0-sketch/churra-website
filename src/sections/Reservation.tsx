@@ -13,6 +13,7 @@ import {
   zurichNow,
   type MenuChoice,
 } from "../../shared/booking";
+import { formatCHF, isVoucherCode } from "../../shared/voucher";
 import { EMAIL, EMAIL_HREF, PHONE_DISPLAY, PHONE_HREF } from "../lib/info";
 import styles from "./Reservation.module.css";
 
@@ -55,6 +56,25 @@ export function Reservation() {
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
   const [code, setCode] = useState("");
+  // Gutschein codes are checked against the shop (balance shown to the guest)
+  const [voucher, setVoucher] = useState<{ code: string; valid: boolean; balance: number } | null>(null);
+  useEffect(() => {
+    if (!isVoucherCode(code)) return setVoucher(null);
+    let gone = false;
+    const t = setTimeout(async () => {
+      try {
+        const r = await fetch(`/api/gutschein?check=${encodeURIComponent(code)}`);
+        const d = (await r.json()) as { valid?: boolean; balance?: number };
+        if (!gone) setVoucher({ code, valid: Boolean(d.valid), balance: Number(d.balance ?? 0) });
+      } catch {
+        if (!gone) setVoucher(null);
+      }
+    }, 350);
+    return () => {
+      gone = true;
+      clearTimeout(t);
+    };
+  }, [code]);
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(""); // honeypot
   const [busy, setBusy] = useState(false);
@@ -125,7 +145,9 @@ export function Reservation() {
     const payload = { date, time, adults, children, menu, name, email, phone, notes, website, code };
     const invalid = validateReservation(payload, { online: true });
     if (invalid) return setError(invalid);
-    if (code.trim() && !discountFor(code)) return setError("Dieser Rabattcode ist leider ungültig.");
+    if (code.trim() && !discountFor(code) && !isVoucherCode(code)) return setError("Dieser Code ist leider ungültig.");
+    if (isVoucherCode(code) && voucher?.code === code && !voucher.valid)
+      return setError("Dieser Gutschein ist ungültig, abgelaufen oder bereits eingelöst.");
     const codeProblem = discountFor(code) && discountProblem(discountFor(code)!, { date, time, menu });
     if (codeProblem) return setError(codeProblem);
     if (!consent) return setError("Bitte bestätigen Sie die Speicherung Ihrer Angaben.");
@@ -388,18 +410,28 @@ export function Reservation() {
                       />
                     </label>
                     <label className={styles.full}>
-                      <span>Rabattcode (optional)</span>
+                      <span>Rabatt- oder Gutscheincode (optional)</span>
                       <input
                         value={code}
                         onChange={(e) => setCode(e.target.value.toUpperCase())}
                         autoComplete="off"
                         autoCapitalize="characters"
                         spellCheck={false}
-                        placeholder="z. B. Gutscheincode eines Partners"
+                        placeholder="z. B. CH-XXXX-XXXX oder Partnercode"
                       />
                       {code.trim() &&
                         (discountFor(code) && discountProblem(discountFor(code)!, { date, time, menu }) ? (
                           <small className={styles.codeBad}>{discountProblem(discountFor(code)!, { date, time, menu })}</small>
+                        ) : isVoucherCode(code) ? (
+                          voucher?.code !== code ? (
+                            <small className={styles.codeOk}>Gutschein wird geprüft …</small>
+                          ) : voucher.valid ? (
+                            <small className={styles.codeOk}>
+                              ✓ Gutschein mit Guthaben {formatCHF(voucher.balance)} – wird beim Bezahlen im Restaurant eingelöst
+                            </small>
+                          ) : (
+                            <small className={styles.codeBad}>Gutschein ungültig, abgelaufen oder bereits eingelöst</small>
+                          )
                         ) : discountFor(code) ? (
                           <small className={styles.codeOk}>✓ {discountFor(code)!.label} – wird beim Bezahlen im Restaurant abgezogen</small>
                         ) : (

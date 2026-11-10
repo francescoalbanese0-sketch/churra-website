@@ -220,9 +220,9 @@ function details(r: Row) {
     ["Name", r.name],
   ];
   if (r.phone) rows.push(["Telefon", r.phone]);
-  const promo = r.notes?.match(/^★ Rabattcode (\S+) – ([^\n]+)/);
+  const promo = r.notes?.match(/^★ (?:Rabattcode|Gutschein) (\S+) – ([^\n]+)/);
   const restNotes = promo ? r.notes!.slice(promo[0].length).trim() : r.notes;
-  if (promo) rows.push(["Rabatt", `${promo[2]} (Code ${promo[1]})`]);
+  if (promo) rows.push([promo[0].startsWith("★ Gutschein") ? "Gutschein" : "Rabatt", `${promo[2]} (Code ${promo[1]})`]);
   if (restNotes) rows.push(["Anmerkung", restNotes]);
   return `<table cellpadding="6" cellspacing="0" style="width:100%;margin:16px 0;font-size:15px">${rows
     .map(

@@ -378,11 +378,11 @@ function ServiceBlock({
                   </em>
                   {r.source !== "online" ? ` · ${r.source}` : ""}
                 </small>
-                {r.notes?.startsWith("★ Rabattcode") && (
+                {r.notes && /^★ (Rabattcode|Gutschein)/.test(r.notes) && (
                   <span className={styles.promo}>{r.notes.split("\n")[0].replace("★ ", "")}</span>
                 )}
-                {r.notes && r.notes.replace(/^★ Rabattcode[^\n]*\n?/, "") && (
-                  <span className={styles.notes}>{r.notes.replace(/^★ Rabattcode[^\n]*\n?/, "")}</span>
+                {r.notes && r.notes.replace(/^★ (Rabattcode|Gutschein)[^\n]*\n?/, "") && (
+                  <span className={styles.notes}>{r.notes.replace(/^★ (Rabattcode|Gutschein)[^\n]*\n?/, "")}</span>
                 )}
               </button>
               <span className={styles.contact}>
