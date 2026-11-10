@@ -1,4 +1,4 @@
-import { VOUCHER_MAX, VOUCHER_MIN, normalizeCode, formatCode } from "../shared/voucher.js";
+import { VOUCHER_MAX, normalizeCode, formatCode } from "../shared/voucher.js";
 import { configured, isAdmin, json } from "./_lib.js";
 import { expiryFrom, mailVoucherTo, vouchers, voucherLink, type Voucher } from "./_voucher.js";
 
@@ -60,7 +60,7 @@ export async function POST(req: Request): Promise<Response> {
 
       case "create": {
         const amount = Math.round(Number(b.amount) * 100) / 100;
-        if (!(amount >= VOUCHER_MIN / 2) || amount > VOUCHER_MAX * 5) return json({ error: "Betrag prüfen." }, 400);
+        if (!(amount >= 10) || amount > VOUCHER_MAX * 5) return json({ error: "Betrag prüfen." }, 400);
         const buyer = String(b.buyerName ?? "").trim().slice(0, 80);
         if (!buyer) return json({ error: "Bitte einen Namen eingeben." }, 400);
         const v = await vouchers.insert({

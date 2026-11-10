@@ -1,7 +1,7 @@
 /** Gutscheine (gift vouchers) — shared between the site, the admin and the API. */
 
 export const VOUCHER_PRESETS = [50, 100, 150, 200] as const;
-export const VOUCHER_MIN = 20;
+export const VOUCHER_MIN = 50;
 export const VOUCHER_MAX = 1000;
 /** How long a voucher is valid after purchase. */
 export const VOUCHER_VALID_YEARS = 2;
