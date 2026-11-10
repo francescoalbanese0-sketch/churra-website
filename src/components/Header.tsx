@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { label: "Speisekarte", href: "#speisekarte" },
   { label: "Takeaway", href: "#takeaway" },
   { label: "Firmen & Gruppen", href: "#firmen" },
+  { label: "Gutscheine", href: "#gutscheine" },
   { label: "Kontakt", href: "#kontakt" },
 ];
 

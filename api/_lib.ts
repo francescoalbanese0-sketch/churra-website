@@ -49,7 +49,7 @@ function supabaseBase(): string {
   }
 }
 
-async function sb(path: string, init: RequestInit = {}): Promise<unknown> {
+export async function sb(path: string, init: RequestInit = {}): Promise<unknown> {
   const url = supabaseBase() + "/rest/v1/" + path;
   const key = env("SUPABASE_SERVICE_ROLE_KEY");
   const res = await fetch(url, {
@@ -174,10 +174,10 @@ export function isAdmin(req: Request): boolean {
 
 // ---------- e-mail (Resend)
 
-const esc = (s: string) =>
+export const esc = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
-async function sendMail(to: string, subject: string, html: string, replyTo?: string) {
+export async function sendMail(to: string, subject: string, html: string, replyTo?: string) {
   const key = env("RESEND_API_KEY");
   if (!key || !to) return;
   try {
@@ -198,7 +198,7 @@ async function sendMail(to: string, subject: string, html: string, replyTo?: str
   }
 }
 
-function frame(inner: string) {
+export function frame(inner: string) {
   return `<!doctype html><html><body style="margin:0;background:#0a0806;font-family:Georgia,serif;color:#ede4d3">
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0806"><tr><td align="center" style="padding:32px 16px">
 <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;border:1px solid #c9a15a;padding:0">

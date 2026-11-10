@@ -1,0 +1,332 @@
+.section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(6rem, 14vh, 9rem) clamp(1rem, 4vw, 3rem);
+  background:
+    radial-gradient(ellipse 55% 40% at 30% 10%, rgba(255, 106, 43, 0.07), transparent 70%),
+    var(--black);
+  border-top: 1px solid rgba(201, 161, 90, 0.25);
+  scroll-margin-top: 4rem;
+}
+
+.head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: clamp(2.5rem, 6vh, 4rem);
+}
+
+.title {
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2.3rem, 5.5vw, 4.2rem);
+  line-height: 1.04;
+  color: var(--ivory);
+}
+
+.lead {
+  max-width: 46ch;
+  color: var(--ivory-dim);
+  line-height: 1.6;
+}
+
+.grid {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+/* ---- live voucher preview */
+.preview {
+  position: sticky;
+  top: 6rem;
+}
+
+.voucher {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 2.2rem 1.6rem 1.6rem;
+  text-align: center;
+  border: 1px solid var(--gold);
+  outline: 1px solid rgba(201, 161, 90, 0.35);
+  outline-offset: -8px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245, 175, 101, 0.12), transparent 70%),
+    linear-gradient(180deg, #14100c, #0a0806);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+}
+
+.vLogo {
+  width: 46%;
+  max-width: 190px;
+  margin-bottom: 0.4rem;
+}
+
+.vLabel {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.vAmount {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  line-height: 1.05;
+  color: #f5af65;
+}
+
+.vFor {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--ivory);
+}
+
+.vMsg {
+  max-width: 30ch;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ivory-dim);
+  overflow-wrap: anywhere;
+}
+
+.vCode {
+  margin-top: 0.8rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px dashed rgba(201, 161, 90, 0.5);
+  font-family: "Courier New", monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  color: var(--ivory-dim);
+}
+
+.vFoot {
+  margin-top: 0.6rem;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ivory-faint, rgba(237, 228, 211, 0.5));
+}
+
+/* ---- form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  border: 1px solid rgba(201, 161, 90, 0.28);
+  background: rgba(18, 15, 13, 0.85);
+}
+
+.amounts {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.amounts legend,
+.fields label > span {
+  margin-bottom: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory-faint, rgba(237, 228, 211, 0.55));
+}
+
+.fields label > span small {
+  float: right;
+  letter-spacing: 0;
+}
+
+.chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.chip {
+  padding: 0.85rem 0;
+  border: 1px solid rgba(201, 161, 90, 0.3);
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  color: var(--ivory);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.chip:last-child {
+  grid-column: 1 / -1;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.chip:hover {
+  border-color: var(--gold);
+}
+
+.chipOn {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
+}
+
+.customAmount {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.customAmount span {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold);
+}
+
+.customAmount input,
+.fields input,
+.fields textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ivory);
+  background: rgba(7, 6, 5, 0.7);
+  border: 1px solid rgba(201, 161, 90, 0.25);
+  padding: 0.8rem 0.9rem;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.customAmount input {
+  max-width: 10rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+}
+
+.customAmount input:focus,
+.fields input:focus,
+.fields textarea:focus {
+  border-color: var(--gold);
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.fields label {
+  display: flex;
+  flex-direction: column;
+}
+
+.fields label:first-child {
+  grid-column: 1 / -1;
+}
+
+.fields textarea {
+  resize: vertical;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.hp {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.error {
+  padding: 0.8rem 1rem;
+  border-left: 2px solid var(--ember, #ff6a2b);
+  background: rgba(255, 106, 43, 0.08);
+  font-size: 0.9rem;
+  color: var(--ivory);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.primary {
+  display: inline-block;
+  padding: 1rem 2.2rem;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: var(--black);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.primary:hover:not(:disabled) {
+  background: transparent;
+  color: var(--gold);
+}
+
+.primary:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.pay {
+  font-size: 0.8rem;
+  color: var(--ivory-faint, rgba(237, 228, 211, 0.55));
+}
+
+.note {
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--ivory-faint, rgba(237, 228, 211, 0.55));
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .preview {
+    position: static;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .chips {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .fields {
+    grid-template-columns: 1fr;
+  }
+}

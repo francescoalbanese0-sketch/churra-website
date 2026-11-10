@@ -17,6 +17,7 @@ import { Christmas } from "./sections/Christmas";
 import { Location } from "./sections/Location";
 import { Footer } from "./sections/Footer";
 import { Groups } from "./sections/Groups";
+import { Vouchers } from "./sections/Vouchers";
 import styles from "./App.module.css";
 
 // The one persistent Three.js layer the whole journey travels through —
@@ -57,6 +58,7 @@ export default function App() {
         <Reservation />
         <Christmas />
         <Groups />
+        <Vouchers />
         <Location />
         <Footer />
       </main>

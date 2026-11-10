@@ -210,6 +210,9 @@ export default function Admin() {
           <button type="button" className={styles.ghost} onClick={() => window.print()}>
             Drucken
           </button>
+          <a href="/admin/gutscheine" className={styles.ghost}>
+            Gutscheine
+          </a>
           <button type="button" className={styles.ghost} onClick={() => setShowSettings(true)}>
             Einstellungen
           </button>

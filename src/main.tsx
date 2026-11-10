@@ -7,10 +7,14 @@ import App from './App.tsx'
 const Admin = lazy(() => import('./admin/Admin.tsx'))
 const Cancel = lazy(() => import('./admin/Cancel.tsx'))
 const Legal = lazy(() => import('./legal/Legal.tsx'))
+const GutscheinPage = lazy(() => import('./gutschein/GutscheinPage.tsx'))
+const Gutscheine = lazy(() => import('./admin/Gutscheine.tsx'))
 
 const path = window.location.pathname.replace(/\/+$/, '')
 const page =
   path === '/admin' ? <Admin />
+  : path === '/admin/gutscheine' ? <Gutscheine />
+  : path === '/gutschein' ? <GutscheinPage />
   : path === '/stornieren' ? <Cancel />
   : path === '/impressum' ? <Legal kind="impressum" />
   : path === '/datenschutz' ? <Legal kind="datenschutz" />

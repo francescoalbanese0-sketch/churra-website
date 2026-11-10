@@ -1,0 +1,240 @@
+.search {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1 1 18rem;
+  max-width: 30rem;
+}
+
+.search input,
+.redeem input,
+.modal input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ivory);
+  background: #050403;
+  border: 1px solid rgba(201, 161, 90, 0.35);
+  padding: 0.6rem 0.75rem;
+  border-radius: 0;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.2rem 1.25rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.totals,
+.empty {
+  font-size: 0.85rem;
+  color: rgba(237, 228, 211, 0.6);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item {
+  border: 1px solid rgba(201, 161, 90, 0.25);
+  background: rgba(18, 15, 13, 0.9);
+}
+
+.dim .row {
+  opacity: 0.55;
+}
+
+.row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 9.5rem 12rem 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  color: var(--ivory);
+}
+
+.code {
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+
+.amount {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.amount small {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: rgba(237, 228, 211, 0.55);
+}
+
+.who {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  color: rgba(237, 228, 211, 0.75);
+}
+
+.badge {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+}
+
+.active {
+  color: #7fc18a;
+}
+
+.redeemed {
+  color: rgba(237, 228, 211, 0.55);
+}
+
+.cancelled,
+.expired {
+  color: #e2664a;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.4rem 1rem 1.2rem;
+  border-top: 1px solid rgba(201, 161, 90, 0.15);
+}
+
+.details dl {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 0.35rem 1rem;
+  margin: 0.6rem 0 0;
+  font-size: 0.92rem;
+}
+
+.details dt {
+  color: rgba(237, 228, 211, 0.55);
+}
+
+.details dd {
+  margin: 0;
+  color: var(--ivory);
+}
+
+.history p {
+  margin: 0 0 0.3rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.history ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+  color: rgba(237, 228, 211, 0.8);
+}
+
+.redeem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem;
+  padding: 0.9rem;
+  border: 1px solid rgba(201, 161, 90, 0.35);
+  background: rgba(201, 161, 90, 0.06);
+}
+
+.redeem label,
+.modal label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(237, 228, 211, 0.6);
+}
+
+.redeem label:first-child input {
+  width: 9rem;
+  flex: none;
+  font-size: 1.15rem;
+}
+
+.more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal {
+  width: min(100%, 440px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.6rem;
+  border: 1px solid rgba(201, 161, 90, 0.4);
+  background: #0d0b09;
+}
+
+.modal h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--ivory);
+}
+
+.hint {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(237, 228, 211, 0.6);
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 1fr auto;
+    gap: 0.3rem 0.8rem;
+  }
+  .who {
+    grid-column: 1 / -1;
+  }
+  .details dl {
+    grid-template-columns: 6.5rem 1fr;
+  }
+}

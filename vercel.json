@@ -15,11 +15,28 @@
     {
       "source": "/datenschutz",
       "destination": "/index.html"
+    },
+    {
+      "source": "/gutschein",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin/gutscheine",
+      "destination": "/index.html"
     }
   ],
   "headers": [
     {
       "source": "/admin",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/admin/gutscheine",
       "headers": [
         {
           "key": "X-Robots-Tag",
