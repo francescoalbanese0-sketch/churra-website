@@ -2,7 +2,8 @@
  * Gutscheine: Stripe Checkout (no SDK, plain HTTPS), fulfilment, storage and e-mails.
  *
  * Extra environment variables (Vercel → Settings → Environment Variables):
- *   STRIPE_SECRET_KEY      sk_live_… (or sk_test_… to try it out)
+ *   STRIPE_SECRET_KEY      a restricted key rk_live_… (or rk_test_… in a sandbox) with
+ *                          "Checkout Sessions: Write" — a full sk_… key also works
  *   STRIPE_WEBHOOK_SECRET  whsec_… from the Stripe webhook for /api/stripe-webhook
  */
 import { createHmac, randomInt, timingSafeEqual } from "node:crypto";
@@ -19,6 +20,8 @@ import { SITE_URL, esc, frame, sb, sendMail } from "./_lib.js";
 
 const env = (k: string) => (typeof process !== "undefined" ? process.env[k] : undefined) ?? "";
 const enc = encodeURIComponent;
+/** Pinned so a Stripe update never changes the responses this code reads. */
+const STRIPE_VERSION = "2026-10-28.endive";
 
 export const stripeConfigured = () => Boolean(env("STRIPE_SECRET_KEY"));
 
@@ -67,6 +70,7 @@ async function stripe(path: string, params?: string[]): Promise<Record<string, u
     method: params ? "POST" : "GET",
     headers: {
       authorization: `Bearer ${env("STRIPE_SECRET_KEY")}`,
+      "stripe-version": STRIPE_VERSION,
       ...(params ? { "content-type": "application/x-www-form-urlencoded" } : {}),
     },
     body: params ? params.join("&") : undefined,
@@ -86,6 +90,7 @@ export async function createCheckout(o: VoucherOrder): Promise<string> {
       customer_email: o.buyerEmail,
       success_url: `${site}/gutschein?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${site}/#gutscheine`,
+      integration_identifier: "churra-gutschein-qkzvtmwa",
     }),
     ...form(
       {

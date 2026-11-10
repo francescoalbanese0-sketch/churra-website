@@ -4,7 +4,8 @@ import { fulfill, verifyStripeSignature } from "./_voucher.js";
 /**
  * Stripe → Developers → Webhooks → Add endpoint
  *   URL:    https://www.churra.ch/api/stripe-webhook
- *   Events: checkout.session.completed, checkout.session.async_payment_succeeded
+ *   Events: checkout.session.completed, checkout.session.async_payment_succeeded,
+ *           checkout.session.async_payment_failed
  * The signing secret (whsec_…) goes into the Vercel variable STRIPE_WEBHOOK_SECRET.
  */
 export async function POST(req: Request): Promise<Response> {
@@ -29,5 +30,7 @@ export async function POST(req: Request): Promise<Response> {
       return json({ error: "server" }, 500); // Stripe retries
     }
   }
+  if (event.type === "checkout.session.async_payment_failed" && s?.metadata?.kind === "gutschein")
+    console.warn("Gutschein-Zahlung fehlgeschlagen:", s.id); // no voucher is created
   return json({ received: true });
 }
