@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { label: "Takeaway", href: "#takeaway" },
   { label: "Firmen & Gruppen", href: "#firmen" },
   { label: "Gutscheine", href: "#gutscheine" },
+  { label: "Jobs", href: "#jobs" },
   { label: "Kontakt", href: "#kontakt" },
 ];
 

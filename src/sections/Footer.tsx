@@ -37,6 +37,7 @@ export function Footer() {
         <span>{INSTAGRAM_HANDLE}</span>
       </a>
       <nav className={styles.legal}>
+        <a href="#jobs">Jobs</a>
         <a href="/impressum">Impressum</a>
         <a href="/datenschutz">Datenschutz</a>
       </nav>

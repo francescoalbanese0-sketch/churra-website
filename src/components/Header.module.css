@@ -174,8 +174,11 @@
 }
 
 @media (min-width: 781px) and (max-width: 1150px) {
+  .nav {
+    gap: clamp(0.8rem, 1.5vw, 1.4rem);
+  }
   .navLink {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
   }
 }
