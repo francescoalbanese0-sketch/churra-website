@@ -4,7 +4,7 @@ import styles from "./Menu.module.css";
 
 const PRICE_GROUPS = [
   {
-    title: "Abends · Rodízio",
+    title: "Rodízio · Abends & Sonntagmittag",
     rows: [
       { label: "Erwachsene", price: "CHF 69.–" },
       { label: "Kinder", price: "CHF 35.–" },
@@ -12,7 +12,7 @@ const PRICE_GROUPS = [
     ],
   },
   {
-    title: "Mittags · Buffet",
+    title: "Mittags · Buffet · Montag bis Freitag",
     rows: [{ label: "Buffet", price: "CHF 23.–" }],
   },
 ];
@@ -73,7 +73,7 @@ export function Menu() {
       <div ref={headRef} className={styles.head}>
         <p className={`label ${styles.eyebrow}`}>03 — Speisekarte</p>
         <h2 className={styles.title}>Rodízio</h2>
-        <p className={styles.subtitle}>Am Abend: brasilianische Fleischspezialitäten, direkt am Tisch tranchiert — so viel Sie möchten.</p>
+        <p className={styles.subtitle}>Am Abend und am Sonntagmittag: brasilianische Fleischspezialitäten, direkt am Tisch tranchiert — so viel Sie möchten.</p>
       </div>
 
       <div ref={pricesRef} className={styles.prices}>
