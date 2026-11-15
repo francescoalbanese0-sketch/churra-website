@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { EMAIL } from "../lib/info";
+import { FREE_CANCEL_HOURS, NO_SHOW_FEE_CHF } from "../../shared/booking";
 import styles from "./Legal.module.css";
 
 const COMPANY = "Pizza Grill Chur GmbH";
@@ -131,9 +132,52 @@ function Datenschutz() {
   );
 }
 
-export default function Legal({ kind }: { kind: "impressum" | "datenschutz" }) {
+function Reservierung() {
+  return (
+    <>
+      <h1>Reservierungsbedingungen</h1>
+      <p>Diese Bedingungen gelten für alle Tischreservierungen im Restaurant Churra – online, telefonisch oder per E-Mail.</p>
+
+      <h2>1. Reservierung</h2>
+      <p>
+        Ihre Reservierung ist verbindlich, sobald wir sie bestätigt haben (per E-Mail oder telefonisch). Bitte geben Sie
+        die richtige Anzahl Personen sowie korrekte Kontaktdaten an.
+      </p>
+
+      <h2>2. Kostenlose Stornierung und Änderungen</h2>
+      <p>
+        Sie können Ihre Reservierung bis {FREE_CANCEL_HOURS} Stunden vor der reservierten Zeit kostenlos stornieren oder die
+        Anzahl Personen ändern – über den Link in Ihrer Bestätigungs-E-Mail, telefonisch unter{" "}
+        <a href="tel:+41812500221">+41 81 250 02 21</a> oder per E-Mail an <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+      </p>
+
+      <h2>3. Nichterscheinen und kurzfristig weniger Personen</h2>
+      <p>
+        Erscheinen Sie ohne rechtzeitige Abmeldung nicht, oder kommen weniger Personen als reserviert und wurde uns dies
+        nicht mindestens {FREE_CANCEL_HOURS} Stunden vorher mitgeteilt, dürfen wir eine Umtriebsentschädigung von{" "}
+        <strong>CHF {NO_SHOW_FEE_CHF}.– pro nicht erschienener Person</strong> in Rechnung stellen. Für diese Plätze haben wir
+        Tische freigehalten, Ware eingekauft und Personal eingeplant.
+      </p>
+
+      <h2>4. Falsche oder missbräuchliche Reservierungen</h2>
+      <p>
+        Reservierungen mit offensichtlich falschen Angaben dürfen wir ohne Mitteilung stornieren. Bei absichtlich falschen
+        Reservierungen behalten wir uns vor, den entstandenen Schaden geltend zu machen.
+      </p>
+
+      <h2>5. Kontakt</h2>
+      <Address />
+      <p className={styles.small}>Stand: November 2026</p>
+    </>
+  );
+}
+
+type Kind = "impressum" | "datenschutz" | "reservierung";
+const TITLES: Record<Kind, string> = { impressum: "Impressum", datenschutz: "Datenschutz", reservierung: "Reservierungsbedingungen" };
+
+export default function Legal({ kind }: { kind: Kind }) {
   useEffect(() => {
-    document.title = `${kind === "impressum" ? "Impressum" : "Datenschutz"} – Churra`;
+    document.title = `${TITLES[kind]} – Churra`;
     window.scrollTo(0, 0);
   }, [kind]);
 
@@ -142,11 +186,14 @@ export default function Legal({ kind }: { kind: "impressum" | "datenschutz" }) {
       <a href="/" className={styles.logo}>
         <img src="/brand/churra-logo.png" alt="Churra – zur Startseite" />
       </a>
-      <article className={styles.doc}>{kind === "impressum" ? <Impressum /> : <Datenschutz />}</article>
+      <article className={styles.doc}>
+        {kind === "impressum" ? <Impressum /> : kind === "reservierung" ? <Reservierung /> : <Datenschutz />}
+      </article>
       <nav className={styles.links}>
         <a href="/">Startseite</a>
         <a href="/impressum">Impressum</a>
         <a href="/datenschutz">Datenschutz</a>
+        <a href="/reservierungsbedingungen">Reservierungsbedingungen</a>
       </nav>
     </main>
   );

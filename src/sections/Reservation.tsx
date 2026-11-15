@@ -5,6 +5,8 @@ import {
   MENU_LABEL,
   OPENING_DATE,
   PRICES,
+  FREE_CANCEL_HOURS,
+  NO_SHOW_FEE_CHF,
   discountFor,
   discountProblem,
   formatDateDE,
@@ -150,7 +152,7 @@ export function Reservation() {
       return setError("Dieser Gutschein ist ungültig, abgelaufen oder bereits eingelöst.");
     const codeProblem = discountFor(code) && discountProblem(discountFor(code)!, { date, time, menu });
     if (codeProblem) return setError(codeProblem);
-    if (!consent) return setError("Bitte bestätigen Sie die Speicherung Ihrer Angaben.");
+    if (!consent) return setError("Bitte akzeptieren Sie die Reservierungsbedingungen und den Datenschutzhinweis.");
     setBusy(true);
     setError(null);
     try {
@@ -445,7 +447,13 @@ export function Reservation() {
                     <label className={`${styles.full} ${styles.consent}`}>
                       <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
                       <span>
-                        Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung gespeichert werden (
+                        Ich akzeptiere die{" "}
+                        <a href="/reservierungsbedingungen" target="_blank" rel="noopener">
+                          Reservierungsbedingungen
+                        </a>{" "}
+                        (kostenlose Stornierung bis {FREE_CANCEL_HOURS} Std. vorher, danach oder bei Nichterscheinen CHF{" "}
+                        {NO_SHOW_FEE_CHF}.– pro fehlende Person) und bin einverstanden, dass meine Angaben zur Bearbeitung der
+                        Reservierung gespeichert werden (
                         <a href="/datenschutz" target="_blank" rel="noopener">Datenschutz</a>).
                       </span>
                     </label>

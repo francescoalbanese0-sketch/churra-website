@@ -23,6 +23,10 @@
     {
       "source": "/admin/gutscheine",
       "destination": "/index.html"
+    },
+    {
+      "source": "/reservierungsbedingungen",
+      "destination": "/index.html"
     }
   ],
   "headers": [

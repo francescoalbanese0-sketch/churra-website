@@ -40,6 +40,7 @@ export function Footer() {
         <a href="#jobs">Jobs</a>
         <a href="/impressum">Impressum</a>
         <a href="/datenschutz">Datenschutz</a>
+        <a href="/reservierungsbedingungen">Reservierungsbedingungen</a>
       </nav>
     </footer>
   );

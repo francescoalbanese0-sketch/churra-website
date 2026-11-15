@@ -17,6 +17,8 @@ import {
   formatDateDE,
   formatGuests,
   type ServiceId,
+  FREE_CANCEL_HOURS,
+  NO_SHOW_FEE_CHF,
 } from "../shared/booking.js";
 
 const env = (k: string) => (typeof process !== "undefined" ? process.env[k] : undefined) ?? "";
@@ -241,8 +243,9 @@ export async function mailGuestConfirmation(r: Row) {
     frame(`<p>Guten Tag ${esc(r.name)}</p>
 <p>Vielen Dank für Ihre Reservierung. Wir freuen uns auf Ihren Besuch!</p>
 ${details(r)}
-<p style="font-size:14px;color:#a89a84">Können Sie nicht kommen? Bitte stornieren Sie Ihren Tisch hier:<br>
-<a href="${cancel}" style="color:#f5af65">Reservierung stornieren</a></p>`),
+<p style="font-size:14px;color:#a89a84">Können Sie nicht kommen oder kommen weniger Personen? Bitte stornieren oder melden Sie es uns bis ${FREE_CANCEL_HOURS} Stunden vorher – kostenlos:<br>
+<a href="${cancel}" style="color:#f5af65">Reservierung stornieren</a> · Telefon 081 250 02 21</p>
+<p style="font-size:13px;color:#a89a84">Bei Nichterscheinen oder kurzfristig weniger Personen verrechnen wir gemäss unseren <a href="${SITE_URL()}/reservierungsbedingungen" style="color:#f5af65">Reservierungsbedingungen</a> CHF ${NO_SHOW_FEE_CHF}.– pro fehlende Person.</p>`),
     env("RESTAURANT_EMAIL") || "info@churra.ch",
   );
 }

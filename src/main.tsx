@@ -18,6 +18,7 @@ const page =
   : path === '/stornieren' ? <Cancel />
   : path === '/impressum' ? <Legal kind="impressum" />
   : path === '/datenschutz' ? <Legal kind="datenschutz" />
+  : path === '/reservierungsbedingungen' ? <Legal kind="reservierung" />
   : <App />
 
 createRoot(document.getElementById('root')!).render(

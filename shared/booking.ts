@@ -60,6 +60,10 @@ export const WEEK: Record<number, ServiceWindow[]> = {
   6: [{ id: "dinner", label: "Abend", open: "18:00", lastArrival: "21:30", menuChoice: true }],
 };
 
+/** Reservierungsbedingungen: free cancellation window and the fee per missing guest. */
+export const FREE_CANCEL_HOURS = 24;
+export const NO_SHOW_FEE_CHF = 50;
+
 export const PRICES = {
   lunchBuffet: "CHF 23.–",
   rodizioAdult: "CHF 69.–",
