@@ -57,7 +57,6 @@ export const JOB_BENEFITS = [
   "Ein familiäres, motiviertes Team",
   "Ein neues Konzept mit Feuer und Leidenschaft",
   "Lohn nach L-GAV",
-  "Personalessen",
 ];
 
 export const WORK_PERMITS = ["Schweizer/in", "Ausweis C", "Ausweis B", "Ausweis G", "Ausweis L", "Andere"] as const;
